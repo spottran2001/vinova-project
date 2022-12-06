@@ -32,6 +32,7 @@ gem "jbuilder"
 
 gem "devise", "~> 4.1"
 gem 'simple_form'
+gem 'carrierwave'
 
 # Use Kredis to get higher-level data types in Redis [https://github.com/rails/kredis]
 # gem "kredis"

@@ -1,0 +1,84 @@
+<%= render "header" %>
+
+<div class="body-header">
+    <div class="content">
+        <div class="header-content">
+            <p>
+                PROVIDING SERVICES AT YOUR DOOR
+            </p>
+        </div>
+        <div class="body-content">
+            <span style="color: #707070; font-weight: bold;">MACC Essentials</span>
+            <span >
+                has an important role in making 
+                supplies and services available to customers and their 
+                patients during this critical time. This includes services 
+                from various domains. Our aim is to aid you. As much we can.
+            </span>
+        </div>
+
+        <button class="content-button"> LEARN MORE</button>
+    </div>
+    <%= image_tag("cover_img.png", size: "500", :class => "img-preview") %>
+</div>
+<div class="new-product">
+    <div class="carousel-header">
+        <span>NEW </span>
+        <span>PRODUCT</span>
+    </div>
+    <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel" style="display:flex">
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev", style="margin: 0">
+            <%= image_tag("Move_prev.png", :class => "carousel-btn-prev")%>
+        </button>
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <div class="card" >
+                    <div class="img-wrapper">
+                        <%= image_tag("cover_img.png")%>
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <div class="card">
+                    <div class="img-wrapper">
+                        <%= image_tag("cover_img.png")%>
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-item">
+            <div class="card">
+                    <div class="img-wrapper">
+                        <%= image_tag("cover_img.png")%>
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+            <%= image_tag("Move_next.png", :class => "carousel-btn-next")%>
+        </button>
+    </div>
+</div>
+<div class="gg-review">
+    <div class="gg-rv-header">
+        <span style="color: #E2342D">COVID-19 </span>
+        <span style="color: #231F20">GUIDELINES</span>
+    </div>
+    <div class="gg-rv-content">
+        <div style="width: 650px">
+            <p style="box-sizing: inherit">
+                Please remember to adhere all covid-19 guidelines. Precaution is key to survive this pendemic. Stay at home and Stay safe
+            </p>
+        </div>
+    </div>
+</div>
+
+<%= render "footer" %>
