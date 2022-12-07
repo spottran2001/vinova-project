@@ -32,6 +32,7 @@ gem "jbuilder"
 
 gem "devise", "~> 4.1"
 gem 'simple_form'
+gem 'carrierwave'
 
 # Use Kredis to get higher-level data types in Redis [https://github.com/rails/kredis]
 # gem "kredis"
@@ -74,6 +75,7 @@ group :test do
   gem "webdrivers"
 end
 
-gem "cssbundling-rails", "~> 1.1"
 
 gem "jsbundling-rails", "~> 1.0"
+
+gem "cssbundling-rails", "~> 1.1"

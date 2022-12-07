@@ -1,0 +1,51 @@
+<%= form_for(@product, html: {multipart: true}) do |f| %>
+  <div class="field">
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :price %>
+    <%= f.text_field :price %>
+  </div>
+  <div class="field">
+    <%= f.label :discount_percentage %>
+    <%= f.text_field :discount_percentage %>
+  </div>
+  <div class="field">
+    <%= f.label :company %>
+    <%= f.text_field :company %>
+  </div>
+  <div class="field">
+    <%= f.label :categories %>
+    <%= f.text_field :categories %>
+  </div>
+  <div class="field">
+    <%= f.label :product_types %>
+    <%= f.text_field :product_types %>
+  </div>
+  <div class="field">
+    <%= f.label :description %>
+    <%= f.text_area :description %>
+  </div>
+  <div class="field">
+    <%= f.label :return_policy %>
+    <%= f.text_area :return_policy %>
+  </div>
+  <div class="field">
+    <%= f.label :citizen_policy %>
+    <%= f.text_area :citizen_policy %>
+  </div>
+
+  <%= f.fields_for :product_photos do |p| %>
+    <div class="field">
+      <%= p.label :photo %><br>
+      <%= p.file_field :photo, multiple: true, name: "product_photos[photo][]", class: "upload-image" %>
+    </div>
+  <% end %>
+  <div id="preview"></div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+

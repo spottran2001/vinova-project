@@ -2,29 +2,45 @@ class ProductsController < ApplicationController
     before_action :current_product, only: [:show, :edit, :update, :destroy]
 
     def index
-        @products = Product.all
-        @new_product = @products.order(:created)
-        @discount_product = @products.order(:discount_percentage)
-        @top_selling_product = @products.order(:quantity_sold)
+        @products = Product.all.order(:id)
     end
 
     def show
+        @product_photos = @product.product_photos.all
     end
 
     def new
         @product =  Product.new
+        @product_photo = @product.product_photos.build
     end
 
     def create
         @product = Product.new(product_params)
+
+        if @product.save
+            params[:product_photos]['photo'].each do |a|
+                unless a.blank?
+                    @product_photo = @product.product_photos.create!(:photo => a)
+                end
+            end
+            redirect_to @product
+        else
+            render :new, status: :unprocessable_entity
+        end
     end
 
     def edit
     end
 
     def update
-        if @current_product.update(product_params)
-            redirect_to @current_product
+    
+        if @product.update(product_params)
+            params[:product_photos]['photo'].each do |a|
+                unless a.blank?
+                    @product_photo = @product.product_photos.create!(:photo => a)
+                end
+            end
+            redirect_to @product
         else
             render :edit, status: :unprocessable_entity
         end
@@ -32,6 +48,7 @@ class ProductsController < ApplicationController
 
     def destroy
         @current_product.destroy
+        redirect_to products_url
     end
 
     private
@@ -41,10 +58,11 @@ class ProductsController < ApplicationController
         .require(:product)
         .permit(:name, :price, :discount_percentage,
                 :categories, :company, :product_type, 
-                :description, :return_policy, :citizen_policy)
+                :description, :return_policy, :citizen_policy,
+                product_photos_attributes: [:id, :product_id, :photo])
     end
 
     def current_product
-        @current_product = Product.find(params[:id]))
+        @product = Product.find(params[:id])
     end
 end
