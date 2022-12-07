@@ -31,50 +31,129 @@
             <%= image_tag("Move_prev.png", :class => "carousel-btn-prev")%>
         </button>
         <div class="carousel-inner">
-            <div class="carousel-item active">
+            <div class="carousel-item active new-product-carousel">
                 <div class="card" >
                     <div class="img-wrapper">
-                        <%= image_tag("cover_img.png")%>
+                        <%= image_tag(@new_product.product_photos.first.photo.url.to_s, :class => "img-carousel")%>
                     </div>
                     <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
+                        <h5 class="card-title"><%= @new_product.name %></h5>
                     </div>
                 </div>
             </div>
-            <div class="carousel-item">
-                <div class="card">
-                    <div class="img-wrapper">
-                        <%= image_tag("Product_img.png")%>
-                    </div>
-                    <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                    </div>
-                </div>
-            </div>
-            <div class="carousel-item">
-                <div class="card">
-                    <div class="img-wrapper">
-                        <%= image_tag("Product_img2.png")%>
-                    </div>
-                    <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
+            <% @new_products.each do |product| %>
+                <div class="carousel-item new-product-carousel">
+                    <div class="card">
+                        <div class="img-wrapper">
+                            <%= image_tag(product.product_photos.first.photo.url.to_s, :class => "img-carousel")%>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title"><%= product.name %></h5>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="carousel-item">
-                <div class="card">
-                    <div class="img-wrapper">
-                        <%= image_tag("Product_img3.png")%>
-                    </div>
-                    <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                    </div>
-                </div>
-            </div>
+            <% end %>
         </div>
         <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
             <%= image_tag("Move_next.png", :class => "carousel-btn-next")%>
         </button>
+    </div>
+</div>
+<div class="weekly-discount promo">
+    <div class="feature">
+        <%= image_tag("Feature_img1.png", size: "569x672")%>
+    </div>
+    <div style="width: 100%">
+        <div class="promo-carousel-header" style="display: flex; justify-content: space-between; margin-bottom:50px">
+            <div class="promo-content">
+                <span style="color: #E2342D; margin-left:170px">MACC </span>
+                <span style="color: #231F20">WEEKLY DISCOUNT</span>
+            </div>
+            <button class="promo-btn" style="margin-right:50px; border:0">VIEW ALL</button>
+        </div>
+    
+        <div class="promo-carousel-content" style="display:flex; justify-content: center;">
+            <div id="carouselExampleControls2" class="carousel slide" data-bs-ride="carousel" style="display:flex">
+                <div class="carousel-inner">
+                    <div class="carousel-item promo-carousel active">
+                        <div class="card promo-card" >
+                            <div class="promo-img-wrapper">
+                                <%= image_tag(@discount_product.product_photos.first.photo.url.to_s, :class => "img-carousel")%>
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title"><%= @discount_product.name %></h5>
+                                <span style="text-decoration-line: line-through; margin: 10px">₹ <%= @discount_product.price %> </span>
+                                <span>₹ <%= @discount_product.price*(100-@discount_product.discount_percentage)/100 %></span>
+                            </div>
+                        </div>
+                    </div>
+                    <% @discount_products.each do |product| %>
+                        <div class="carousel-item promo-carousel">
+                            <div class="card promo-card">
+                                <div class="promo-img-wrapper">
+                                    <%= image_tag(product.product_photos.first.photo.url.to_s, :class => "img-carousel")%>
+                                </div>
+                                <div class="card-body">
+                                    <h5 class="card-title"><%= product.name %></h5>
+                                    <span style="text-decoration-line: line-through; margin: 10px">₹ <%= product.price %> </span>
+                                    <span>₹ <%= product.price*(100-product.discount_percentage)/100 %></span>
+                                </div>
+                            </div>
+                        </div>
+                    <% end %>
+                </div>
+            </div>  
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls2" data-bs-slide="next">
+                <%= image_tag("Move_next.png", :class => "carousel-btn-next")%>
+            </button>
+        </div>
+    </div>
+</div>
+<div class="top-selling promo">
+    <div style="order:1">
+        <%= image_tag("Feature_img2.png", size: "569x672")%>
+    </div>
+    <div class="promo-carousel" style="width: 100%">
+        <div class="promo-carousel-header" style="display: flex; justify-content: space-between; margin-bottom:50px">
+            <div class="promo-content">
+                <span style="color: #E2342D; margin-left:170px">MACC </span>
+                <span style="color: #231F20">TOP SELLINGS</span>
+            </div>
+            <button class="promo-btn" style="margin-right:50px; border:0">VIEW ALL</button>
+        </div>
+        <div class="promo-carousel-content" style="display:flex">
+            <div id="carouselExampleControls3" class="carousel slide" data-bs-ride="carousel" style="display:flex">
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls3" data-bs-slide="prev", style="margin: 0">
+                    <%= image_tag("Move_prev.png", :class => "carousel-btn-prev")%>
+                </button>
+                <div class="carousel-inner">
+                    <div class="carousel-item promo-carousel active">
+                        <div class="card promo-card" >
+                            <div class="promo-img-wrapper">
+                                <%= image_tag(@top_selling_product.product_photos.first.photo.url.to_s, :class => "img-carousel")%>
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title"><%= @top_selling_product.name %></h5>
+                                <span>₹ <%= @top_selling_product.price %> </span>
+                            </div>
+                        </div>
+                    </div>
+                    <% @top_selling_products.each do |product| %>
+                        <div class="carousel-item promo-carousel">
+                            <div class="card promo-card">
+                                <div class="promo-img-wrapper">
+                                    <%= image_tag(product.product_photos.first.photo.url.to_s, :class => "img-carousel")%>
+                                </div>
+                                <div class="card-body">
+                                    <h5 class="card-title"><%= product.name %></h5>
+                                    <span>₹ <%= product.price %> </span>
+                                </div>
+                            </div>
+                        </div>
+                    <% end %>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 <div class="gg-review">

@@ -2,7 +2,7 @@ class ProductsController < ApplicationController
     before_action :current_product, only: [:show, :edit, :update, :destroy]
 
     def index
-        @products = Product.all
+        @products = Product.all.order(:id)
     end
 
     def show
@@ -19,9 +19,9 @@ class ProductsController < ApplicationController
 
         if @product.save
             params[:product_photos]['photo'].each do |a|
-            unless a.blank?
-                @product_photo = @product.product_photos.create!(:photo => a)
-            end
+                unless a.blank?
+                    @product_photo = @product.product_photos.create!(:photo => a)
+                end
             end
             redirect_to @product
         else
@@ -35,10 +35,10 @@ class ProductsController < ApplicationController
     def update
     
         if @product.update(product_params)
-            params[:product_photo]['photo'].each do |a|
-            unless a.blank?
-                @product_photo = @product.product_photo.create!(:photo => a)
-            end
+            params[:product_photos]['photo'].each do |a|
+                unless a.blank?
+                    @product_photo = @product.product_photos.create!(:photo => a)
+                end
             end
             redirect_to @product
         else
