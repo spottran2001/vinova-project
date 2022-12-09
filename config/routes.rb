@@ -7,6 +7,12 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   # root "articles#index"
 
-  resources :products
+  resources :products do
     resources :product_photos, only: [:destroy]
+
+    collection do
+      get 'collection'
+    end
+  end
+  resources :site
 end

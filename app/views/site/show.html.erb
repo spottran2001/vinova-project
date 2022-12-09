@@ -1,0 +1,135 @@
+<body style="max-width: 1860px;">
+    <%= render "header" %>
+    <div class="product-details" style="display: flex;justify-content: center;">
+        <div class="product-details-body">
+            <div class="details-header" style="">
+            <ul class="breadcrumb">
+                <li><a href="#">Home</a></li>
+                <span class="span-breadcrumb">/</span>
+                <li><a href="#">Products</a></li>
+                <span class="span-breadcrumb">/</span>
+                <li><a href="#">Product</a></li>
+            </ul>
+            </div>
+            <div class="about-product">
+                <div class="product-images" style="display:flex">
+                    <div class="image-scroll" style="flex-grow:1; background-color:blue">
+                    dad
+                    </div>
+                    <div class="select-image" style="flex-basis: 514px; height: 514px">
+                        <%= image_tag("cover_img.png", size: "450", :style => "padding:32px")%>
+                    </div>
+                </div>
+                <div class="details-body">
+                    <span>bla</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="new-product">
+        <div class="carousel-header">
+            <span style="color: #231F20">YOU MAY ALSO LIKE</span>
+        </div>
+        <div class="carousel-content">
+            <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel" style="display:flex; max-height:360px">
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev", style="margin: 0">
+                    <%= image_tag("Move_prev.png", :class => "carousel-btn-prev")%>
+                </button>
+                <div class="carousel-inner">
+                    <div class="carousel-item new-product-carousel active ">
+                        <div class="card" >
+                            <div class="img-wrapper">
+                                <%= image_tag(@first_product.product_photos.first.photo.url.to_s, :class => "img-carousel")%>
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title"><%= @first_product.name %></h5>
+                            </div>
+                        </div>
+                    </div>
+                    <% @products.each do |product| %>
+                        <div class="carousel-item new-product-carousel">
+                            <div class="card">
+                                <div class="img-wrapper">
+                                    <%= image_tag(product.product_photos.first.photo.url.to_s, :class => "img-carousel")%>
+                                </div>
+                                <div class="card-body">
+                                    <h5 class="card-title"><%= product.name %></h5>
+                                </div>
+                            </div>
+                        </div>
+                    <% end %>
+                </div>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+                    <%= image_tag("Move_next.png", :class => "carousel-btn-next")%>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <%= render "footer" %>
+
+    <div class="container">
+        <!-- Carousel wrapper -->
+        <div id="carouselExampleIndicators" class="carousel slide carousel-fade" data-bs-ride="carousel">
+
+
+            <!-- Slides -->
+
+            <div class="carousel-inner mb-5">
+                <div class="carousel-item active">
+                    <img src="https://mdbcdn.b-cdn.net/img/Photos/Slides/img%20(88).webp" class="d-block w-100" alt="..." />
+                </div>
+                <div class="carousel-item">
+                    <img src="https://mdbcdn.b-cdn.net/img/Photos/Slides/img%20(121).webp" class="d-block w-100" alt="..." />
+                </div>
+                <div class="carousel-item">
+                    <img src="https://mdbcdn.b-cdn.net/img/Photos/Slides/img%20(31).webp" class="d-block w-100" alt="..." />
+                </div>
+            </div>
+
+
+            <!-- Slides -->
+
+            <div class="product-thumbnails">
+                <!-- Controls -->
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev" style="background-color:red">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+
+
+                <!-- Thumbnails -->
+
+
+                <div class="carousel-indicators my-thumb">
+                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1" style="width: 80px; height:80px">
+                        <img class="d-block w-100"
+                        src="https://mdbcdn.b-cdn.net/img/Photos/Others/Carousel-thumbs/img%20(88).webp" class="img-fluid img-thumb" />
+                    </button>
+                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2" style="width: 80px; height:80px">
+                        <img class="d-block w-100"
+                        src="https://mdbcdn.b-cdn.net/img/Photos/Others/Carousel-thumbs/img%20(121).webp" class="img-fluid img-thumb" />
+                    </button>
+                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3" style="width: 80px; height:80px">
+                        <img class="d-block w-100"
+                        src="https://mdbcdn.b-cdn.net/img/Photos/Others/Carousel-thumbs/img%20(31).webp" class="img-fluid img-thumb" />
+                    </button>
+                </div>
+
+                <!-- Thumbnails -->
+
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next" style="background-color: rebeccapurple;">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+                <!-- Controls -->
+            </div>
+
+        </div>
+    </div>
+    <div>
+        <%= image_tag("logo.png", id: 'something')%>
+        <%= image_tag("logo2.png", id: 'something2')%>
+        <img src="logo2.png" alt="">
+    </div>
+</body>

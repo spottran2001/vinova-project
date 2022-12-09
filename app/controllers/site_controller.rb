@@ -1,5 +1,7 @@
 class SiteController < ApplicationController
   before_action :current_product, only: [:show, :update_favorite] 
+  
+  #home page
   def index
     @new_product_list = Product.all.order(created_at: :desc)
     @new_product = @new_product_list.first
@@ -15,9 +17,18 @@ class SiteController < ApplicationController
     @top_selling_products = @top_selling_product_list.offset(1)
   end
 
+  #product details
   def show 
+    @product_photos = @product.product_photos.all
+
+    @product_list = Product.all
+    @first_product = @product_list.first
+    @products = @product_list.offset(1)
   end
 
+  def new
+    
+  end
   #check this 
   # def update_favorite
   #   @product.favorite = !@product.favorite
@@ -26,6 +37,6 @@ class SiteController < ApplicationController
   private
 
   def current_product
-    @product = Produc.find(params[:id])
+    @product = Product.find(params[:id])
   end
 end
