@@ -8,11 +8,10 @@ Rails.application.routes.draw do
   # root "articles#index"
 
   resources :products do
-    resources :product_photos, only: [:destroy]
+    resources :product_photos
 
-    collection do
-      get 'collection'
-    end
   end
   resources :site
+    resources :payments, only: [:index]
+    resources :checkouts, only: [:index]
 end

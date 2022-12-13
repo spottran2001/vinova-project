@@ -19085,5 +19085,31 @@ img.img-carousel{
   flex-direction: column;
 }
 
+.checkout-btn{
+  background-color: #E2342D;
+  border: none;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  height: 45px;
+  width: 300px;
+  font-size: 20px;
+}
+
+.form-check{
+  border-style: solid;
+  border-color: #C4C4C4;
+  border-width: 1px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  padding: 0px;
+  margin: 0px;
+} 
+
+.form-check .form-check-input{
+  margin: 0px 10px 0px 5px;
+}
 
 /* some */

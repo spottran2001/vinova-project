@@ -5,17 +5,12 @@
   <%= @product.name %>
 </p>
 
-<% @product_photos.each do |p| %>
-  <%= image_tag(p.photo.url.to_s, alt: "Image") %>
-  <%= link_to "Destroy", product_photo_path(p), data: {
-                    turbo_method: :delete,
-                    turbo_confirm: "Are you sure delete this image?"
-                  } %>
-<% end %>
+<h2>Photos:</h2>
+<div style="display:flex">
+  <%= render @product.product_photos %>
+</div>
 <br>
 |
-
-
 <ul>
   <li><%= link_to 'Edit', edit_product_path(@product) %></li>
   <li><%= link_to 'Back', products_path %></li>
