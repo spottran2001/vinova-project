@@ -33,7 +33,7 @@
                     <%= image_tag("Move_prev.png", :class => "carousel-btn-prev")%>
                 </button>
                 <div class="carousel-inner">
-                    <div class="carousel-item new-product-carousel active ">
+                    <div class="carousel-item product new-product-carousel active ">
                         <div class="card" >
                             <div class="img-wrapper">
                                 <%= image_tag(@new_product.product_photos.first.photo.url.to_s, :class => "img-carousel")%>
@@ -44,7 +44,7 @@
                         </div>
                     </div>
                     <% @new_products.each do |product| %>
-                        <div class="carousel-item new-product-carousel">
+                        <div class="carousel-item product new-product-carousel">
                             <div class="card">
                                 <div class="img-wrapper">
                                     <%= image_tag(product.product_photos.first.photo.url.to_s, :class => "img-carousel")%>
@@ -78,7 +78,7 @@
             <div class="promo-carousel-content" style="display:flex; justify-content: center;">
                 <div id="carouselExampleControls2" class="carousel slide" data-bs-ride="carousel" style="display:flex">
                     <div class="carousel-inner">
-                        <div class="carousel-item promo-carousel active">
+                        <div class="carousel-item product promo-carousel active">
                             <div class="card promo-card" >
                                 <div class="promo-img-wrapper">
                                     <%= image_tag(@discount_product.product_photos.first.photo.url.to_s, :class => "img-carousel")%>
@@ -91,7 +91,7 @@
                             </div>
                         </div>
                         <% @discount_products.each do |product| %>
-                            <div class="carousel-item promo-carousel">
+                            <div class="carousel-item product promo-carousel">
                                 <div class="card promo-card">
                                     <div class="promo-img-wrapper">
                                         <%= image_tag(product.product_photos.first.photo.url.to_s, :class => "img-carousel")%>
@@ -130,7 +130,7 @@
                         <%= image_tag("Move_prev.png", :class => "carousel-btn-prev")%>
                     </button>
                     <div class="carousel-inner">
-                        <div class="carousel-item promo-carousel active">
+                        <div class="carousel-item product promo-carousel active">
                             <div class="card promo-card" >
                                 <div class="promo-img-wrapper">
                                     <%= image_tag(@top_selling_product.product_photos.first.photo.url.to_s, :class => "img-carousel")%>
@@ -142,7 +142,7 @@
                             </div>
                         </div>
                         <% @top_selling_products.each do |product| %>
-                            <div class="carousel-item promo-carousel">
+                            <div class="carousel-item product promo-carousel">
                                 <div class="card promo-card">
                                     <div class="promo-img-wrapper">
                                         <%= image_tag(product.product_photos.first.photo.url.to_s, :class => "img-carousel")%>

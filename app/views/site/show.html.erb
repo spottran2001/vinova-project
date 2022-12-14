@@ -1,27 +1,118 @@
 <body style="max-width: 1860px;">
     <%= render "header" %>
-    <div class="product-details" style="display: flex;justify-content: center;">
+    <div class="product-details">
         <div class="product-details-body">
-            <div class="details-header" style="">
-            <ul class="breadcrumb">
-                <li><a href="#">Home</a></li>
-                <span class="span-breadcrumb">/</span>
-                <li><a href="#">Products</a></li>
-                <span class="span-breadcrumb">/</span>
-                <li><a href="#">Product</a></li>
-            </ul>
+            <div class="details-header" style="margin-left:430px">
+                <ul class="breadcrumb">
+                    <li><a href="#">Home</a></li>
+                    <span class="span-breadcrumb">/</span>
+                    <li><a href="#">Products</a></li>
+                    <span class="span-breadcrumb">/</span>
+                    <li><a href="#">Product</a></li>
+                </ul>
             </div>
             <div class="about-product">
                 <div class="product-images" style="display:flex">
-                    <div class="image-scroll" style="flex-grow:1; background-color:blue">
-                    dad
-                    </div>
-                    <div class="select-image" style="flex-basis: 514px; height: 514px">
-                        <%= image_tag("cover_img.png", size: "450", :style => "padding:32px")%>
-                    </div>
+                    <section class="carousel-container" style="display:flex">
+                        <div class="container text-center my-3">
+                            <div class="row mx-auto my-auto justify-content-center">
+                                <div id="recipeCarousel" class="carousel slide" data-bs-ride="carousel">
+                                    <div class="carousel-inner" role="listbox">
+                                        <a class="carousel-control-next bg-transparent w-aut" href="#recipeCarousel" role="button" data-bs-slide="next">
+                                            <span class="carousel-control-next-icon"></span>
+                                        </a>                                       
+                                        <div class="carousel-item product-image active">
+                                            <div class="card-img" style="width: 100px; height: 100px; padding:20px; margin:20px">
+                                                <%= image_tag(@product.product_photos.first.photo.url.to_s, :class => "img-fluid")%>
+                                            </div>
+                                        </div>
+                                        <% @product.product_photos.offset(1).each do |ph| %>
+                                            <div class="carousel-item product-image">
+                                                <div class="card-img" style="width: 100px; height: 100px; padding:20px; margin:20px">
+                                                    <%= image_tag(ph.photo.url.to_s, :class => "img-fluid")%>
+                                                </div>
+                                            </div>
+                                        <% end %>
+                                    </div>
+                                    <a class="carousel-control-prev bg-transparent w-aut" href="#recipeCarousel" role="button" data-bs-slide="prev" style="background-color:red">
+                                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                    </a>
+                                </div>
+                            </div>		
+                        </div>
+                        <div class="select-image" style="flex-basis: 514px; height: 514px">
+                            <%= image_tag(@product.product_photos.first.photo.url.to_s, size: "450", :style => "padding:32px", :class=> "current-image")%>
+                        </div>
+                    </section>
                 </div>
                 <div class="details-body">
-                    <span>bla</span>
+                    <div class="product-details-content" style="display:flex; justify-content: space-between;">
+                        <span class="product-details-header">COLOROX  WIPES</span>
+                        <%= image_tag("heart_img.png", size: "20")%>
+                    </div>
+                    <p class="product-details-price">₹ 40.00</p>
+                    <div class="product_types" style="display:flex">
+                        <div class="product_type">
+                            <span>BLACK</span>
+                        </div>
+                        <div class="product_type">
+                            <span>GOLD</span>
+                        </div>
+                        <div class="product_type">
+                            <span>APOLLO</span>
+                        </div>
+                    </div>
+                    <button class="add-cart-btn">ADD TO CART</button>
+                    <p class="product-details-content">
+                        Aliquam faucibus, odio nec commodo aliquam, neque felis placerat
+                        dui, a porta ante lectus dapibus est. Aliquam a bibendum mi,
+                        condimentum est. Mauris arcu odio, vestibulum quis dapibus sit amet, 
+                    </p>
+                    <div class="details-drop">
+                        <div class="dropdown" style="display:flex">
+                            <button class="btn btn-primary description" type="button" data-bs-toggle="collapse" data-bs-target="#collapseDescription" aria-expanded="false" aria-controls="collapseExample" style="display:flex; justify-content: center;">
+                                <span style="padding:0px 160px">DESCRIPTION</span>
+                                <div>
+                                    <%= image_tag("arrow_img.png", :style => "transform: rotate(-90deg)")%>
+                                </div>
+                            </button>
+                        </div>
+                        <div class="collapse" id="collapseDescription">
+                            <div class="card card-body">
+                               DESCRIPTION
+                            </div>
+                        </div>
+                    </div>
+                    <div class="details-drop">
+                        <div class="dropdown" style="display:flex">
+                            <button class="btn btn-primary description" type="button" data-bs-toggle="collapse" data-bs-target="#collapseReturnPolicy" aria-expanded="false" aria-controls="collapseExample" style="display:flex; justify-content: center;">
+                                <span style="padding:0px 150px">RETURN POLICY</span>
+                                <div>
+                                    <%= image_tag("arrow_img.png", :style => "transform: rotate(-90deg)")%>
+                                </div>
+                            </button>
+                        </div>
+                        <div class="collapse" id="collapseReturnPolicy">
+                            <div class="card card-body">
+                               RETURN POLICY
+                            </div>
+                        </div>
+                    </div>
+                    <div class="details-drop">
+                        <div class="dropdown" style="display:flex">
+                            <button class="btn btn-primary description" type="button" data-bs-toggle="collapse" data-bs-target="#collapseCitizenPolicy" aria-expanded="false" aria-controls="collapseExample" style="display:flex; justify-content: center;">
+                                <span style="padding:0px 150px">CITIZEN POLICY</span>
+                                <div>
+                                    <%= image_tag("arrow_img.png", :style => "transform: rotate(-90deg)")%>
+                                </div>
+                            </button>
+                        </div>
+                        <div class="collapse" id="collapseCitizenPolicy">
+                            <div class="card card-body">
+                                CITIZEN POLICY
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -36,7 +127,7 @@
                     <%= image_tag("Move_prev.png", :class => "carousel-btn-prev")%>
                 </button>
                 <div class="carousel-inner">
-                    <div class="carousel-item new-product-carousel active ">
+                    <div class="carousel-item product new-product-carousel active ">
                         <div class="card" >
                             <div class="img-wrapper">
                                 <%= image_tag(@first_product.product_photos.first.photo.url.to_s, :class => "img-carousel")%>
@@ -47,7 +138,7 @@
                         </div>
                     </div>
                     <% @products.each do |product| %>
-                        <div class="carousel-item new-product-carousel">
+                        <div class="carousel-item product new-product-carousel">
                             <div class="card">
                                 <div class="img-wrapper">
                                     <%= image_tag(product.product_photos.first.photo.url.to_s, :class => "img-carousel")%>
@@ -67,69 +158,5 @@
     </div>
 
     <%= render "footer" %>
-
-    <div class="container">
-        <!-- Carousel wrapper -->
-        <div id="carouselExampleIndicators" class="carousel slide carousel-fade" data-bs-ride="carousel">
-
-
-            <!-- Slides -->
-
-            <div class="carousel-inner mb-5">
-                <div class="carousel-item active">
-                    <img src="https://mdbcdn.b-cdn.net/img/Photos/Slides/img%20(88).webp" class="d-block w-100" alt="..." />
-                </div>
-                <div class="carousel-item">
-                    <img src="https://mdbcdn.b-cdn.net/img/Photos/Slides/img%20(121).webp" class="d-block w-100" alt="..." />
-                </div>
-                <div class="carousel-item">
-                    <img src="https://mdbcdn.b-cdn.net/img/Photos/Slides/img%20(31).webp" class="d-block w-100" alt="..." />
-                </div>
-            </div>
-
-
-            <!-- Slides -->
-
-            <div class="product-thumbnails">
-                <!-- Controls -->
-                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev" style="background-color:red">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Previous</span>
-                </button>
-
-
-                <!-- Thumbnails -->
-
-
-                <div class="carousel-indicators my-thumb">
-                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1" style="width: 80px; height:80px">
-                        <img class="d-block w-100"
-                        src="https://mdbcdn.b-cdn.net/img/Photos/Others/Carousel-thumbs/img%20(88).webp" class="img-fluid img-thumb" />
-                    </button>
-                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2" style="width: 80px; height:80px">
-                        <img class="d-block w-100"
-                        src="https://mdbcdn.b-cdn.net/img/Photos/Others/Carousel-thumbs/img%20(121).webp" class="img-fluid img-thumb" />
-                    </button>
-                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3" style="width: 80px; height:80px">
-                        <img class="d-block w-100"
-                        src="https://mdbcdn.b-cdn.net/img/Photos/Others/Carousel-thumbs/img%20(31).webp" class="img-fluid img-thumb" />
-                    </button>
-                </div>
-
-                <!-- Thumbnails -->
-
-                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next" style="background-color: rebeccapurple;">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Next</span>
-                </button>
-                <!-- Controls -->
-            </div>
-
-        </div>
-    </div>
-    <div>
-        <%= image_tag("logo.png", id: 'something')%>
-        <%= image_tag("logo2.png", id: 'something2')%>
-        <img src="logo2.png" alt="">
-    </div>
+    
 </body>

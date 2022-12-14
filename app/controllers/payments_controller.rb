@@ -1,25 +1,22 @@
 class PaymentsController < ApplicationController
-    def index
-    end
-    
-    def new
-        @payment = Payment.new
-    end
+	def index
+	end
 
+	def new
+		@payment = Payment.new
+	end
 
-    def create
-        @payment = Payment.new(payment_params)
+	def create
+		@payment = Payment.new(payment_params)
 
-        if @payment.save
-            @payment.order.status = "completed"
-        end
-    end
+		if @payment.save
+			@payment.order.status = "completed"
+		end
+	end
 
-    private
+	private
 
-    def payment_params
-        params.require(:payment).permit()
-    end
-    
-
+	def payment_params
+		params.require(:payment).permit()
+	end
 end
