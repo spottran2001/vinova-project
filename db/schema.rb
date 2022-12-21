@@ -10,9 +10,76 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_12_06_090053) do
+ActiveRecord::Schema[7.0].define(version: 2022_12_20_071322) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "cart_details", force: :cascade do |t|
+    t.decimal "product_price"
+    t.bigint "cart_id"
+    t.bigint "product_id"
+    t.integer "product_quantity", default: 0
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["cart_id"], name: "index_cart_details_on_cart_id"
+    t.index ["product_id"], name: "index_cart_details_on_product_id"
+  end
+
+  create_table "carts", force: :cascade do |t|
+    t.decimal "total_price"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_carts_on_user_id"
+  end
+
+  create_table "checkouts", force: :cascade do |t|
+    t.string "first_name", null: false
+    t.string "last_name", null: false
+    t.text "address", null: false
+    t.text "secound_address"
+    t.bigint "postal_code", null: false
+    t.string "country", null: false
+    t.bigint "phone_number", null: false
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_checkouts_on_user_id"
+  end
+
+  create_table "order_details", force: :cascade do |t|
+    t.decimal "product_price"
+    t.bigint "order_id"
+    t.bigint "product_id"
+    t.integer "product_quantity", default: 0
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["order_id"], name: "index_order_details_on_order_id"
+    t.index ["product_id"], name: "index_order_details_on_product_id"
+  end
+
+  create_table "orders", force: :cascade do |t|
+    t.string "status", default: "pending "
+    t.decimal "total_price"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_orders_on_user_id"
+  end
+
+  create_table "payments", force: :cascade do |t|
+    t.string "payment_type"
+    t.string "name_on_card"
+    t.string "card_number"
+    t.string "expiry_date"
+    t.integer "security_code"
+    t.bigint "order_id"
+    t.bigint "checkout_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["checkout_id"], name: "index_payments_on_checkout_id"
+    t.index ["order_id"], name: "index_payments_on_order_id"
+  end
 
   create_table "product_photos", force: :cascade do |t|
     t.integer "product_id"

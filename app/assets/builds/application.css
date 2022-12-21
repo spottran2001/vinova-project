@@ -18844,6 +18844,21 @@ footer{
   flex-wrap: wrap;
   align-content: space-around;
 }
+
+.forgot{
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-content: space-around;
+}
+
+.register{
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-content: space-around;
+}
+
 .body-header{
   width: 100%;
   display: inline-flex;
@@ -19213,7 +19228,18 @@ p.product-details-price{
   font-weight: 700;
   font-size: 25px;
   line-height: 30px;
-
   color: #E2342D;
 }
 
+.collection-btn{
+  border: none;
+  width: 246px;
+  height: 72px;
+  background-color: white;
+  color: #4A4B4D;
+}
+
+.collection-product-card{
+  padding:10px 60px;
+  margin:0px 20px;
+}

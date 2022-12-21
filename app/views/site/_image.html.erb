@@ -1,0 +1,33 @@
+  <div class="product-images" style="display:flex">
+    <section class="carousel-container" style="display:flex">
+        <div class="container text-center my-3">
+            <div class="row mx-auto my-auto justify-content-center">
+                <div id="recipeCarousel" class="carousel slide" data-bs-ride="carousel">
+                    <div class="carousel-inner" role="listbox">
+                        <a class="carousel-control-next bg-transparent w-aut" href="#recipeCarousel" role="button" data-bs-slide="next">
+                            <span class="carousel-control-next-icon"></span>
+                        </a>                                       
+                        <div class="carousel-item product-image active">
+                            <div class="card-img" style="width: 100px; height: 100px; padding:20px; margin:20px">
+                                <%= image_tag(@product.product_photos.first.photo.url.to_s, :class => "img-fluid")%>
+                            </div>
+                        </div>
+                        <% @product.product_photos.offset(1).each do |ph| %>
+                            <div class="carousel-item product-image">
+                                <div class="card-img" style="width: 100px; height: 100px; padding:20px; margin:20px">
+                                    <%= image_tag(ph.photo.url.to_s, :class => "img-fluid")%>
+                                </div>
+                            </div>
+                        <% end %>
+                    </div>
+                    <a class="carousel-control-prev bg-transparent w-aut" href="#recipeCarousel" role="button" data-bs-slide="prev" style="background-color:red">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    </a>
+                </div>
+            </div>		
+        </div>
+        <div class="select-image" style="flex-basis: 514px; height: 514px">
+            <%= image_tag(@product.product_photos.first.photo.url.to_s, size: "450", :style => "padding:32px", :class=> "current-image")%>
+        </div>
+    </section>
+</div>

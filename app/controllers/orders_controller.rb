@@ -10,7 +10,7 @@ class OrdersController < ApplicationController
   end
 
   def create
-    @order = Order.new(Cart.find(id: @current_user.id))
+    @order = Order.new(@current_user.cart)
 
     if @order.save
       redirect_to :controller => 'checkout', :action => 'index' 
@@ -29,7 +29,7 @@ class OrdersController < ApplicationController
   private
 
   def current_order
-    @current_order - Order.find(params[:id])
+    @current_order = Order.find(params[:id])
   end
 
   def order_params

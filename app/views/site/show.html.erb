@@ -1,162 +1,40 @@
 <body style="max-width: 1860px;">
     <%= render "header" %>
+   
+    <% if flash[:notice] %>
+        <div class="alert alert-success" style="background-color:#29B3AC; color:white; font-size:25px; display:flex; justify-content:end">
+            <span style="margin-right:0px; font-weight:100">
+                <%= flash[:notice] %>
+            </span>
+            <span style="margin-right:0px">
+                <%= link_to "CHECK NOW", carts_path, :style =>"text-decoration:none; color:white; font-weight:bold; margin-right:650px"%>
+            </span>
+            <%= link_to site_path(@product), :style => "background-color:#29B3AC" do %>
+                <button type="button" class="close" data-dismiss="alert" style="border:none; background-color:#29B3AC; color: white">&times;</button>
+            <% end %>
+        </div>
+    <% end %>
     <div class="product-details">
         <div class="product-details-body">
             <div class="details-header" style="margin-left:430px">
                 <ul class="breadcrumb">
-                    <li><a href="#">Home</a></li>
+                    <li><%= link_to "Home", root_path%></li>
                     <span class="span-breadcrumb">/</span>
-                    <li><a href="#">Products</a></li>
+                    <li><%= link_to "Products", collections_site_index_path %></li>
                     <span class="span-breadcrumb">/</span>
                     <li><a href="#">Product</a></li>
                 </ul>
             </div>
             <div class="about-product">
-                <div class="product-images" style="display:flex">
-                    <section class="carousel-container" style="display:flex">
-                        <div class="container text-center my-3">
-                            <div class="row mx-auto my-auto justify-content-center">
-                                <div id="recipeCarousel" class="carousel slide" data-bs-ride="carousel">
-                                    <div class="carousel-inner" role="listbox">
-                                        <a class="carousel-control-next bg-transparent w-aut" href="#recipeCarousel" role="button" data-bs-slide="next">
-                                            <span class="carousel-control-next-icon"></span>
-                                        </a>                                       
-                                        <div class="carousel-item product-image active">
-                                            <div class="card-img" style="width: 100px; height: 100px; padding:20px; margin:20px">
-                                                <%= image_tag(@product.product_photos.first.photo.url.to_s, :class => "img-fluid")%>
-                                            </div>
-                                        </div>
-                                        <% @product.product_photos.offset(1).each do |ph| %>
-                                            <div class="carousel-item product-image">
-                                                <div class="card-img" style="width: 100px; height: 100px; padding:20px; margin:20px">
-                                                    <%= image_tag(ph.photo.url.to_s, :class => "img-fluid")%>
-                                                </div>
-                                            </div>
-                                        <% end %>
-                                    </div>
-                                    <a class="carousel-control-prev bg-transparent w-aut" href="#recipeCarousel" role="button" data-bs-slide="prev" style="background-color:red">
-                                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                    </a>
-                                </div>
-                            </div>		
-                        </div>
-                        <div class="select-image" style="flex-basis: 514px; height: 514px">
-                            <%= image_tag(@product.product_photos.first.photo.url.to_s, size: "450", :style => "padding:32px", :class=> "current-image")%>
-                        </div>
-                    </section>
-                </div>
-                <div class="details-body">
-                    <div class="product-details-content" style="display:flex; justify-content: space-between;">
-                        <span class="product-details-header">COLOROX  WIPES</span>
-                        <%= image_tag("heart_img.png", size: "20")%>
-                    </div>
-                    <p class="product-details-price">₹ 40.00</p>
-                    <div class="product_types" style="display:flex">
-                        <div class="product_type">
-                            <span>BLACK</span>
-                        </div>
-                        <div class="product_type">
-                            <span>GOLD</span>
-                        </div>
-                        <div class="product_type">
-                            <span>APOLLO</span>
-                        </div>
-                    </div>
-                    <button class="add-cart-btn">ADD TO CART</button>
-                    <p class="product-details-content">
-                        Aliquam faucibus, odio nec commodo aliquam, neque felis placerat
-                        dui, a porta ante lectus dapibus est. Aliquam a bibendum mi,
-                        condimentum est. Mauris arcu odio, vestibulum quis dapibus sit amet, 
-                    </p>
-                    <div class="details-drop">
-                        <div class="dropdown" style="display:flex">
-                            <button class="btn btn-primary description" type="button" data-bs-toggle="collapse" data-bs-target="#collapseDescription" aria-expanded="false" aria-controls="collapseExample" style="display:flex; justify-content: center;">
-                                <span style="padding:0px 160px">DESCRIPTION</span>
-                                <div>
-                                    <%= image_tag("arrow_img.png", :style => "transform: rotate(-90deg)")%>
-                                </div>
-                            </button>
-                        </div>
-                        <div class="collapse" id="collapseDescription">
-                            <div class="card card-body">
-                               DESCRIPTION
-                            </div>
-                        </div>
-                    </div>
-                    <div class="details-drop">
-                        <div class="dropdown" style="display:flex">
-                            <button class="btn btn-primary description" type="button" data-bs-toggle="collapse" data-bs-target="#collapseReturnPolicy" aria-expanded="false" aria-controls="collapseExample" style="display:flex; justify-content: center;">
-                                <span style="padding:0px 150px">RETURN POLICY</span>
-                                <div>
-                                    <%= image_tag("arrow_img.png", :style => "transform: rotate(-90deg)")%>
-                                </div>
-                            </button>
-                        </div>
-                        <div class="collapse" id="collapseReturnPolicy">
-                            <div class="card card-body">
-                               RETURN POLICY
-                            </div>
-                        </div>
-                    </div>
-                    <div class="details-drop">
-                        <div class="dropdown" style="display:flex">
-                            <button class="btn btn-primary description" type="button" data-bs-toggle="collapse" data-bs-target="#collapseCitizenPolicy" aria-expanded="false" aria-controls="collapseExample" style="display:flex; justify-content: center;">
-                                <span style="padding:0px 150px">CITIZEN POLICY</span>
-                                <div>
-                                    <%= image_tag("arrow_img.png", :style => "transform: rotate(-90deg)")%>
-                                </div>
-                            </button>
-                        </div>
-                        <div class="collapse" id="collapseCitizenPolicy">
-                            <div class="card card-body">
-                                CITIZEN POLICY
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="new-product">
-        <div class="carousel-header">
-            <span style="color: #231F20">YOU MAY ALSO LIKE</span>
-        </div>
-        <div class="carousel-content">
-            <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel" style="display:flex; max-height:360px">
-                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev", style="margin: 0">
-                    <%= image_tag("Move_prev.png", :class => "carousel-btn-prev")%>
-                </button>
-                <div class="carousel-inner">
-                    <div class="carousel-item product new-product-carousel active ">
-                        <div class="card" >
-                            <div class="img-wrapper">
-                                <%= image_tag(@first_product.product_photos.first.photo.url.to_s, :class => "img-carousel")%>
-                            </div>
-                            <div class="card-body">
-                                <h5 class="card-title"><%= @first_product.name %></h5>
-                            </div>
-                        </div>
-                    </div>
-                    <% @products.each do |product| %>
-                        <div class="carousel-item product new-product-carousel">
-                            <div class="card">
-                                <div class="img-wrapper">
-                                    <%= image_tag(product.product_photos.first.photo.url.to_s, :class => "img-carousel")%>
-                                </div>
-                                <div class="card-body">
-                                    <h5 class="card-title"><%= product.name %></h5>
-                                </div>
-                            </div>
-                        </div>
-                    <% end %>
-                </div>
-                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
-                    <%= image_tag("Move_next.png", :class => "carousel-btn-next")%>
-                </button>
-            </div>
-        </div>
-    </div>
 
-    <%= render "footer" %>
+                <%= render "image"%>
+                
+                <%= render "product_detail"%>
+            </div>
+        </div>
+    </div>
+   <%= render "carousel_show", product: @product, order_item: @order_item %>
+
+<%= render "footer" %>
     
 </body>

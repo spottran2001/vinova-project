@@ -1,0 +1,70 @@
+<div class="details-body">
+    <div class="product-details-content" style="display:flex; justify-content: space-between;">
+        <span class="product-details-header"><%= @product.name %></span>
+        <%= image_tag("heart_img.png", size: "20")%>
+    </div>
+    <p class="product-details-price">₹ <%= @product.price %></p>
+    <div class="product_types" style="display:flex">
+        <div class="product_type">
+            <span>BLACK</span>
+        </div>
+        <div class="product_type">
+            <span>GOLD</span>
+        </div>
+        <div class="product_type">
+            <span>APOLLO</span>
+        </div>
+    </div>
+    <div>
+    <%= button_to "ADD TO CART", { action: "add_to_cart", params: {cart: {product_id: @product.id, product_quantity: 1, product_price: @product.price}}}, {:class => "add-cart-btn"} %>
+    <p class="product-details-content">
+        Aliquam faucibus, odio nec commodo aliquam, neque felis placerat
+        dui, a porta ante lectus dapibus est. Aliquam a bibendum mi,
+        condimentum est. Mauris arcu odio, vestibulum quis dapibus sit amet, 
+    </p>
+    <div class="details-drop">
+        <div class="dropdown" style="display:flex">
+            <button class="btn btn-primary description" type="button" data-bs-toggle="collapse" data-bs-target="#collapseDescription" aria-expanded="false" aria-controls="collapseExample" style="display:flex; justify-content: center;">
+                <span style="padding:0px 160px">DESCRIPTION</span>
+                <div>
+                    <%= image_tag("arrow_img.png", :style => "transform: rotate(-90deg)")%>
+                </div>
+            </button>
+        </div>
+        <div class="collapse" id="collapseDescription">
+            <div class="card card-body">
+                <%= @product.description %>
+            </div>
+        </div>
+    </div>
+    <div class="details-drop">
+        <div class="dropdown" style="display:flex">
+            <button class="btn btn-primary description" type="button" data-bs-toggle="collapse" data-bs-target="#collapseReturnPolicy" aria-expanded="false" aria-controls="collapseExample" style="display:flex; justify-content: center;">
+                <span style="padding:0px 150px">RETURN POLICY</span>
+                <div>
+                    <%= image_tag("arrow_img.png", :style => "transform: rotate(-90deg)")%>
+                </div>
+            </button>
+        </div>
+        <div class="collapse" id="collapseReturnPolicy">
+            <div class="card card-body">
+                <%= @product.return_policy %>
+            </div>
+        </div>
+    </div>
+    <div class="details-drop">
+        <div class="dropdown" style="display:flex">
+            <button class="btn btn-primary description" type="button" data-bs-toggle="collapse" data-bs-target="#collapseCitizenPolicy" aria-expanded="false" aria-controls="collapseExample" style="display:flex; justify-content: center;">
+                <span style="padding:0px 150px">CITIZEN POLICY</span>
+                <div>
+                    <%= image_tag("arrow_img.png", :style => "transform: rotate(-90deg)")%>
+                </div>
+            </button>
+        </div>
+        <div class="collapse" id="collapseCitizenPolicy">
+            <div class="card card-body">
+                <%= @product.citizen_policy %>
+            </div>
+        </div>
+    </div>
+</div>

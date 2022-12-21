@@ -1,0 +1,35 @@
+<body>
+  <div>
+    <%= render "site/admin_header"%>
+    <div>
+      <p style="color: green"><%= notice %></p>
+
+      <div style="display:flex; justify-content:space-between; width:100%">
+        <div>
+          <h1>Users</h1>
+          <%= link_to "New user", new_user_path %>
+        </div>
+        <div>
+          <%= form_tag users_path, method: :get do |f| %>
+            <%= text_field_tag "query", nil, placeholder: "Search...", class: "input input-border", style: "width:250px; height:37px"%>
+            <%= submit_tag "Search", class: "btn btn-primary"%>
+          <% end %>
+        </div>
+      </div>
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">#Id</th>
+            <th scope="col">Email</th>
+            <th scope="col">Date Create</th>
+          </tr>
+        </thead>
+        <%#= turbo_frame_tag "search-results" do %>
+          <tbody id="users">
+              <%= render @users %>
+          </tbody>
+        <%# end %>
+      </table>
+    </div>
+  </div>
+</body>

@@ -1,8 +1,10 @@
 class UsersController < ApplicationController
-  before_action :current_user, only [:show, :edit, :update, :destroy]
+
+  before_action :current_user, only: [:edit, :update, :destroy]
 
   def index
     @users = User.all.order(:id)
+
   end
 
   def show
@@ -16,9 +18,8 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
 
     if @user.save
-      @user.cart.create!
 
-      redirect_to @user
+      redirect_to users_path
     else
       render :new, status: :unprocessable_entity
     end
@@ -28,29 +29,27 @@ class UsersController < ApplicationController
   end
 
   def update
-    if @current_user.update(user_params)
-      redirect_to @current_user
+    if @user.update(user_params)
+      redirect_to @user
     end
   end
   
   def destroy
-    @current_user.destroy
+    @user.destroy
 
     #redirect_to root_path, status: :see_other
+    redirect_to users_url
+
   end
 
   private
 
   def user_params
     params.require(:user)
-          .permit(:first_name, :name, :phone_number, :email)
+          .permit(:email, :password, :password_confirmation)
   end
 
   def current_user
-    @current_user = User.find(params[:id])
-  end
-
-  def check_admin
-      
+    @user = User.find(params[:id])
   end
 end

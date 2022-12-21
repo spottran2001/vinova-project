@@ -1,5 +1,5 @@
 class SiteController < ApplicationController
-  before_action :current_product, only: [:show, :update_favorite] 
+  before_action :current_product, only: [:show] 
 
   #home page
   def index
@@ -19,21 +19,53 @@ class SiteController < ApplicationController
 
   #product details
   def show 
+    @product = Product.find(params[:id])
+
     @product_list = Product.all
     @first_product = @product_list.first
     @products = @product_list.offset(1)
   end
 
+  def collections
+    @products = Product.all
+    @size = @products.size
+  end
+
   def new
   end
-  #check this 
-  # def update_favorite
-  #   @product.favorite = !@product.favorite
-  # end
+
+  def add_to_cart
+    if current_user.cart.nil?
+      current_user.create_cart!(:total_price => 0)
+    end
+    
+    product_id = params[:cart][:product_id]
+    check_product_id = current_user.cart
+                                   .cart_details
+                                   .where(product_id: product_id)
+    if current_user.cart.cart_details.blank? 
+      current_user.cart.cart_details.create(cart_params)
+    else
+      if check_product_id.blank?
+        current_user.cart.cart_details.create(cart_params)
+      else
+        check_product_id.first
+                        .update(product_quantity: 
+                                check_product_id.first.product_quantity + 1) 
+      end
+    end
+    flash[:notice] = "SUCCESSFULLY ADDED TO CART. "
+
+    redirect_to site_path(product_id)
+  end
 
   private
 
   def current_product
     @product = Product.find(params[:id])
+  end
+
+  def cart_params
+    params.require(:cart).permit(:product_id, :product_quantity, :product_price)
   end
 end

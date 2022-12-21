@@ -9,9 +9,24 @@ Rails.application.routes.draw do
 
   resources :products do
     resources :product_photos
-
+    
   end
-  resources :site
-    resources :payments, only: [:index]
-    resources :checkouts, only: [:index]
+  resources :users
+
+  resources :site do 
+    collection do
+      get 'collections'
+      post 'add_to_cart'
+
+      resources :orders do 
+        resources :payments, only: [:create, :new]
+      end      
+
+      resources :checkouts, only: [:create, :new]
+      resources :carts
+    end  
+
+    
+    resources :cart_details
+  end
 end

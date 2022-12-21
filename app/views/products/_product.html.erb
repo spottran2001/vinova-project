@@ -1,38 +1,19 @@
-<div id="<%= dom_id product %>">
-  <p>
-    <strong>Name:</strong>
-    <%= product.name %>
-  </p>
-  <p>
-    <strong>price:</strong>
-    <%= product.price %>
-  </p>
-  <p>
-    <strong>discount_percentage:</strong>
-    <%= product.discount_percentage %>
-  </p>
-  <p>
-    <strong>company:</strong>
-    <%= product.company %>
-  </p>
-  <p>
-    <strong>categories:</strong>
-    <%= product.categories %>
-  </p>
-  <p>
-    <strong>product_types:</strong>
-    <%= product.product_types %>
-  </p>
-  <p>
-    <strong>description:</strong>
-    <%= product.description %>
-  </p>
-  <p>
-    <strong>return_policy:</strong>
-    <%= product.return_policy %>
-  </p>
-   <p>
-    <strong>citizen_policy:</strong>
-    <%= product.citizen_policy %>
-  </p>
-</div>
+<%= turbo_frame_tag product do %>
+  <tr>
+    <th scope="row"><%= product.id %></th>
+    <td><%= product.name %></td>
+    <td><%= product.price %></td>
+    <td><%= product.company %></td>
+    <td><%= image_tag(product.product_photos.first.photo.url.to_s, size:"40") %></td>
+    <td style="display:flex">
+      <% if action_name != "show" %>
+        <%= link_to edit_product_path(product) do %>
+          <svg style="display:inline-block; width:40px; height:40px" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"></path></svg>
+        <% end %>
+        <%= button_to product_path(product), method: :delete, style: "display:inline-block; margin-left:4px; border:none; background-color:white" do %>
+          <svg style="display:inline-block; width:40px; height:40px" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path></svg>
+        <% end %>
+      <% end %>
+    </td>
+  </tr>
+<% end %>

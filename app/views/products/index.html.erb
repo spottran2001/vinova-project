@@ -1,15 +1,38 @@
-<p style="color: green"><%= notice %></p>
+<body>
+  <div>
+    <%= render "site/admin_header"%>
 
-<h1>Products</h1>
+    <div>
+      <p style="color: green"><%= notice %></p>
 
-<div id="products">
-  <% @products.each do |product| %>
-    <%= render product %>
-    <p>
-      <%= link_to "Show this product", product %>
-    </p>
-  <% end %>
-</div>
-
-<%= link_to "New product", new_product_path %>
-
+      <div style="display:flex; justify-content:space-between; width:100%">
+        <div>
+          <h1>Products</h1>
+          <%= link_to "New product", new_product_path %>
+        </div>
+        <div>
+          <%= form_tag products_path, method: :get do |f| %>
+            <%= text_field_tag "query", nil, placeholder: "Search...", class: "input input-border", style: "width:250px; height:37px"%>
+            <%= submit_tag "Search", class: "btn btn-primary"%>
+          <% end %>
+        </div>
+      </div>
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">#Id</th>
+            <th scope="col">Name</th>
+            <th scope="col">Price</th>
+            <th scope="col">Company</th>
+            <th scope="col">Pic</th>
+          </tr>
+        </thead>
+        <%#= turbo_frame_tag "search-results" do %>
+          <tbody id="products">
+              <%= render @products %>
+          </tbody>
+        <%# end %>
+      </table>
+    </div>
+  </div>
+</body>

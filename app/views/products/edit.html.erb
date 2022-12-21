@@ -2,6 +2,10 @@
 
 <%= render "form", product: @product %>
 
+<h2>Photos:</h2>
+<div style="display:flex">
+  <%= render @product.product_photos %>
+</div>
 <br>
 
 <div>

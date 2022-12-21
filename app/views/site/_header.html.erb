@@ -9,7 +9,13 @@
             <a class="nav-link" href="#">Help</a>
           </li>
           <li class="nav-item">
+          <% if user_signed_in? %> 
+            <a class="nav-link">
+              <%= button_to "Sign out", destroy_user_session_path, method: :delete, :style => "border:none"%>
+            </a>
+          <% else %>
             <a class="nav-link" href=<%= new_user_session_path %>>Register/Sign In</a>
+          <% end %>
           </li>
         </ul>
     </div>
@@ -22,18 +28,20 @@
       <div class="collapse navbar-collapse" id="navbarText" style="flex-basis: 80%; padding-left: 170px">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0 nav-center">
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#">SHOP</a>
+            <%= link_to "SHOP", collections_site_index_path, :class =>"nav-link active"%>
           </li>
           <li class="nav-item">
-            <a class="nav-link active" href="#">ASSENTIALS</a>
+            <%= link_to "ASSENTIALS", collections_site_index_path, :class =>"nav-link active"%>
           </li>
           <li class="nav-item right">
-            <button style="border: 0px; background-color: #FFFFFF">
-              <%= image_tag("logo", size: "145x90")%>
-            </button>
+            <%= link_to root_path do%>
+              <button style="border: 0px; background-color: #FFFFFF">
+                <%= image_tag("logo", size: "145x90")%>
+              </button>
+            <% end %>
           </li>
           <li class="nav-item">
-            <a class="nav-link active" href="#">BEST SELLERS</a>
+            <%= link_to "BEST SELLERS", collections_site_index_path, :class =>"nav-link active"%>
           </li>
           <li class="nav-item">
             <a class="nav-link active" href="#">ABOUT US</a>
@@ -53,9 +61,18 @@
             </button>
           </li>
           <li class="nav-item right">
-            <button style="border: 0px; background-color: #FFFFFF">
-              <%= image_tag("shopping_img.png", size: "19x22")%>
-            </button>
+            <%= link_to carts_path do %>
+              <button style="border: 0px; background-color: #FFFFFF; position:relative">
+                <%= image_tag("shopping_img.png", size: "19x22")%>
+                  <span style="position: absolute; left:12px; top:5px; color:red">
+                    <% if current_user.cart.blank? %> 
+                      0
+                    <% else %>
+                      <%= current_user.cart.cart_details.count %>
+                    <% end %>
+                  </span>
+              </button>
+            <% end %>
           </li>
         </ul>
       </div>

@@ -1,0 +1,43 @@
+ <div class="new-product">
+        <div class="carousel-header">
+            <span style="color: #231F20">YOU MAY ALSO LIKE</span>
+        </div>
+        <div class="carousel-content">
+            <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel" style="display:flex; max-height:360px">
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev", style="margin: 0">
+                    <%= image_tag("Move_prev.png", :class => "carousel-btn-prev")%>
+                </button>
+                <div class="carousel-inner">
+                    <div class="carousel-item product new-product-carousel active ">
+                        <%= link_to site_path(@first_product), :style => "text-decoration:none; color:#1E1E20" do %>
+                            <div class="card" >
+                                <div class="img-wrapper">
+                                    <%= image_tag(@first_product.product_photos.first.photo.url.to_s, :class => "img-carousel")%>
+                                </div>
+                                <div class="card-body">
+                                    <h5 class="card-title"><%= @first_product.name %></h5>
+                                </div>
+                            </div>
+                        <% end %>
+                    </div>
+                    <% @products.each do |product| %>
+                        <div class="carousel-item product new-product-carousel">
+                            <%= link_to site_path(product), :style => "text-decoration:none; color:#1E1E20" do %>
+                                <div class="card">
+                                    <div class="img-wrapper">
+                                        <%= image_tag(product.product_photos.first.photo.url.to_s, :class => "img-carousel")%>
+                                    </div>
+                                    <div class="card-body">
+                                        <h5 class="card-title"><%= product.name %></h5>
+                                    </div>
+                                </div>
+                            <% end %>
+                        </div>
+                    <% end %>
+                </div>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+                    <%= image_tag("Move_next.png", :class => "carousel-btn-next")%>
+                </button>
+            </div>
+        </div>
+    </div>

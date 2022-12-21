@@ -4,49 +4,44 @@
     <div style="height:600px; display:flex; justify-content: center; margin:50px 0px">
         <div style="max-height:100%; max-width:1270px; display:flex; justify-content: center;">
             <div class="inform" style="padding-right: 60px">
-                <h1>CHECKOUT</h1>
-                <h5>Delivery Address</h5>
+                <h1 style="padding-bottom: 20px">PAYMENT</h1>
+                <div class="container" style="padding: 0px">
+                    <div class="row">
+                        <div class="col">
+                            <div class="form-check" style="border-bottom-width:0px">
+                                <input id="bitcoin" name="paymentMethod" type="radio" class="form-check-input" checked="" required="">
+                                <label class="form-check-label" for="bitcoin">Bitcoin</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <div class="form-check" style="border-bottom-width:0px">
+                                <input id="apple" name="paymentMethod" type="radio" class="form-check-input" checked="" required="">
+                                <label class="form-check-label" for="apple">Apple Wallet</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <div class="form-check" style="border-bottom-width:0px">
+                                <input id="paypal" name="paymentMethod" type="radio" class="form-check-input" required="">
+                                <label class="form-check-label" for="paypal">PayPal</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <div class="form-check">
+                                <input id="debit-credit" name="paymentMethod" type="radio" class="form-check-input" required="">
+                                <label class="form-check-label" for="debit-credit">Debit / Credit Card</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <h5 style="margin: 20px 0px">Delivery Address</h5>
                 <form class="needs-validation" novalidate="">
                     <div class="row g-3">
-                        <div class="col-sm-6">
-                            <input type="text" class="form-control" id="firstName" placeholder="John" value="" required="" style="height:45px">
-                            <div class="invalid-feedback">
-                                Valid first name is required.
-                            </div>
-                        </div>
-
-                        <div class="col-sm-6">
-                            <input type="text" class="form-control" id="lastName" placeholder="Wick" value="" required="" style="height:45px">
-                            <div class="invalid-feedback">
-                                Valid last name is required.
-                            </div>
-                        </div>
-
-                        <div class="col-12">
-                            <input type="text" class="form-control" id="address" placeholder="Street 32, Pasror road, Daska" required="" style="height:45px">
-                            <div class="invalid-feedback">
-                                Please enter your shipping address.
-                            </div>
-                        </div>
-
-                        <div class="col-12">
-                            <input type="text" class="form-control" id="address2" placeholder="N/A" style="height:45px">
-                        </div>
-
-                        <div class="col-sm-6">
-                            <input type="text" class="form-control" id="firstName" placeholder="*51010" value="" required="" style="height:45px">
-                            <div class="invalid-feedback">
-                               * Valid first name is required.
-                            </div>
-                        </div>
-
-                        <div class="col-sm-6">
-                            <input type="text" class="form-control" id="lastName" placeholder="*Sialkot" value="" required="" style="height:45px">
-                            <div class="invalid-feedback">
-                               * Valid last name is required.
-                            </div>
-                        </div>
-
                         <div class="col-12">
                             <input type="text" class="form-control" id="address2" placeholder="+923445676890" style="height:45px">
                             <div class="invalid-feedback">
@@ -54,22 +49,44 @@
                             </div>
                         </div>
 
+                        <div class="col-12">
+                            <input type="text" class="form-control" id="address2" placeholder="John Wick" style="height:45px">
+                        </div>
+
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" id="firstName" placeholder="12/24" value="" required="" style="height:45px">
+                            <div class="invalid-feedback">
+                               * Valid first name is required.
+                            </div>
+                        </div>
+
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" id="lastName" placeholder="584" value="" required="" style="height:45px">
+                            <div class="invalid-feedback">
+                               * Valid last name is required.
+                            </div>
+                        </div>
                     </div>
 
-                    <div style="width:100%; display:flex; justify-content: space-between; padding-top: 110px">
+                    <div style="width:100%; display:flex; justify-content: space-between; padding-top: 40px">
                         <div style="display:flex; align-items: center;">
-                            <span><%= image_tag("arrow_img", size: "10x15")%></span>
-                            <span>Go back to cart</span>
+                            <%= link_to carts_path do %>
+                                <span><%= image_tag("arrow_img", size: "10x15")%></span>
+                                <span>Go back to checkout</span>
+                            <% end %>
                         </div>
-                        <button class="checkout-btn" type="submit">Save And Continue</button>
+                        <button class="checkout-btn" type="submit">Pay ₹ 40</button>
                     </div>
                 </form>
             </div>
+            <div class="payment"></div>
             <div class="pic">
-                 <%= image_tag("checkout", size: "600x550")%>
+                 <%= image_tag("checkout", size: "600x600")%>
             </div>
         </div>
     </div>
     
+
+
     <%= render "site/footer" %>
 </body>

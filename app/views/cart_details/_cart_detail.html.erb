@@ -1,0 +1,8 @@
+<%= turbo_frame_tag cart_detail do %>
+  <tr>
+    <td><%= cart_detail.product.name %></td>
+    <td><%= cart_detail.product_quantity %></td>
+    <td><%= cart_detail.product.price * cart_detail.product_quantity%></td>
+    <td><%= image_tag(cart_detail.product.product_photos.first.photo.url.to_s, size:"40") %></td>
+  </tr>
+<% end %>

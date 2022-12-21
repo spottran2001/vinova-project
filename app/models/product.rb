@@ -1,5 +1,14 @@
 class Product < ApplicationRecord
-  has_many :product_photos
+  has_many :product_photos, dependent: :destroy
+  has_many :cart_details, dependent: :destroy
+  has_many :order_details, dependent: :destroy
   accepts_nested_attributes_for :product_photos, allow_destroy: true, reject_if: proc { |attributes| attributes['photo'].blank? }
+
+  #validate: tittle max 100 charts
+
+  def self.search(params)
+    params[:query].blank? ? all : where(
+      "name LIKE ?", "%#{sanitize_sql_like(params[:query])}%"
+    )
+  end
 end
-  

@@ -2,7 +2,7 @@ class ProductsController < ApplicationController
   before_action :current_product, only: [:show, :edit, :update, :destroy]
 
   def index
-    @products = Product.all.order(:id)
+    @products = Product.search(params)
   end
 
   def show

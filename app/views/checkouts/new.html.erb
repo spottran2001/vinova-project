@@ -1,0 +1,62 @@
+<body style="max-width: 1860px;">
+    <%= render "site/header" %>
+
+    <div style="height:600px; display:flex; justify-content: center; margin:50px 0px">
+        <div style="max-height:100%; max-width:1270px; display:flex; justify-content: center;">
+            <div class="inform" style="padding-right: 60px">
+                <h1>CHECKOUT</h1>
+                <h5>Delivery Address</h5>
+                <%= simple_form_for @checkout do |f| %>
+                    <div class="row g-3">
+                        <%= f.error_notification %>
+                        <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+                        <div class="col-sm-6">
+                            <%= f.input :first_name, error: '', placeholder: 'John', label: false, input_html: { style: 'height: 45px' } %>
+                        </div>
+
+                        <div class="col-sm-6">
+                            <%= f.input :last_name, placeholder: 'Wick', label: false, input_html: { style: 'height: 45px' } %>
+                        </div>
+
+                        <div class="col-12">
+                            <%= f.input :address, placeholder: 'Street 32, Pasror road, Daska', label: false, input_html: { style: 'height: 45px' } %>
+                        </div>
+
+                        <div class="col-12">
+                            <%= f.input :secound_address, placeholder: 'address2', label: false, input_html: { style: 'height: 45px' } %>
+                        </div>
+
+                        <div class="col-sm-6">
+                            <%= f.input :postal_code, placeholder: '51010', label: false, input_html: { style: 'height: 45px' } %>
+                        </div>
+
+                        <div class="col-sm-6">
+                            <%= f.input :country, placeholder: 'Sialkot', label: false, input_html: { style: 'height: 45px' } %>
+                        </div>
+
+                        <div class="col-12">
+                            <%= f.input :phone_number, placeholder: '+923445676890', label: false, input_html: { style: 'height: 45px' } %>
+                        </div>
+
+                    </div>
+
+                    <div style="width:100%; display:flex; justify-content: space-between; padding-top: 110px">
+                        <div style="display:flex; align-items: center;">
+                            <%= link_to carts_path do %>
+                                <span><%= image_tag("arrow_img", size: "10x15")%></span>
+                                <span>Go back to cart</span>
+                            <% end %>
+                        </div>
+                        <%= f.button :submit, value: "Save And Continue", :class => 'checkout-btn'%>
+                        <%= f.hidden_field :user_id, :value => current_user.id %>
+                    </div>
+                <% end %>
+            </div>
+            <div class="pic">
+                 <%= image_tag("payment", size: "600x550")%>
+            </div>
+        </div>
+    </div>
+    
+    <%= render "site/footer" %>
+</body>
