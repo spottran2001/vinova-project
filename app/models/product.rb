@@ -4,6 +4,13 @@ class Product < ApplicationRecord
   has_many :order_details, dependent: :destroy
   accepts_nested_attributes_for :product_photos, allow_destroy: true, reject_if: proc { |attributes| attributes['photo'].blank? }
 
+  validates :name, presence: true
+  validates :price, presence: true
+  validates :company, presence: true
+  validates :description, presence: true
+  validates :citizen_policy, presence: true
+  validates :return_policy, presence: true
+  validates :categories, presence: true
   #validate: tittle max 100 charts
 
   def self.search(params)

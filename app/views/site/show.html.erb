@@ -1,40 +1,40 @@
 <body style="max-width: 1860px;">
-    <%= render "header" %>
-   
-    <% if flash[:notice] %>
-        <div class="alert alert-success" style="background-color:#29B3AC; color:white; font-size:25px; display:flex; justify-content:end">
-            <span style="margin-right:0px; font-weight:100">
-                <%= flash[:notice] %>
-            </span>
-            <span style="margin-right:0px">
-                <%= link_to "CHECK NOW", carts_path, :style =>"text-decoration:none; color:white; font-weight:bold; margin-right:650px"%>
-            </span>
-            <%= link_to site_path(@product), :style => "background-color:#29B3AC" do %>
-                <button type="button" class="close" data-dismiss="alert" style="border:none; background-color:#29B3AC; color: white">&times;</button>
-            <% end %>
-        </div>
-    <% end %>
-    <div class="product-details">
-        <div class="product-details-body">
-            <div class="details-header" style="margin-left:430px">
-                <ul class="breadcrumb">
-                    <li><%= link_to "Home", root_path%></li>
-                    <span class="span-breadcrumb">/</span>
-                    <li><%= link_to "Products", collections_site_index_path %></li>
-                    <span class="span-breadcrumb">/</span>
-                    <li><a href="#">Product</a></li>
-                </ul>
-            </div>
-            <div class="about-product">
+	<%= render "header" %>
+	
+	<% if flash[:notice] %>
+		<div class="alert alert-success" style="background-color:#29B3AC; color:white; font-size:25px; display:flex; justify-content:end">
+			<span style="margin-right:0px; font-weight:100">
+				<%= flash[:notice] %>
+			</span>
+			<span style="margin-right:0px">
+				<%= link_to "CHECK NOW", carts_path, :style =>"text-decoration:none; color:white; font-weight:bold; margin-right:650px"%>
+			</span>
+			<%= link_to site_path(@product), :style => "background-color:#29B3AC" do %>
+				<button type="button" class="close" data-dismiss="alert" style="border:none; background-color:#29B3AC; color: white">&times;</button>
+			<% end %>
+		</div>
+	<% end %>
+	<div class="product-details">
+		<div class="product-details-body">
+			<div class="details-header" style="margin-left:430px">
+				<ul class="breadcrumb">
+					<li><%= link_to "Home", root_path%></li>
+					<span class="span-breadcrumb">/</span>
+					<li><%= link_to "Products", collections_site_index_path %></li>
+					<span class="span-breadcrumb">/</span>
+					<li><a href="#">Product</a></li>
+				</ul>
+			</div>
+			<div class="about-product">
 
-                <%= render "image"%>
-                
-                <%= render "product_detail"%>
-            </div>
-        </div>
-    </div>
-   <%= render "carousel_show", product: @product, order_item: @order_item %>
+				<%= render "image"%>
+					
+				<%= render "product_detail"%>
+			</div>
+		</div>
+	</div>
+	<%= render "carousel_show", product: @product, order_item: @order_item %>
 
-<%= render "footer" %>
+	<%= render "footer" %>
     
 </body>

@@ -1,7 +1,10 @@
 Rails.application.routes.draw do
   get 'site/index'
   root "site#index"
-  devise_for :users
+  devise_for :users, path: 'user'
+  devise_for :admins, path: 'admins', controllers: {
+    sessions: 'admins/sessions',
+  }
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")
@@ -24,9 +27,7 @@ Rails.application.routes.draw do
 
       resources :checkouts, only: [:create, :new]
       resources :carts
+      resources :cart_details
     end  
-
-    
-    resources :cart_details
   end
 end

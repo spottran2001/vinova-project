@@ -1,0 +1,33 @@
+<body>
+	<%= render "site/header"%>
+	<div>
+		<div style="flex-grow:1">
+			<p style="color: green"><%= notice %></p>
+
+			<div style="display:flex; justify-content:space-between; width:100%">
+			</div>
+			<table class="table">
+				<thead>
+				<tr>
+					<th scope="col">Name</th>
+					<th scope="col">Amount</th>
+					<th scope="col">Price</th>
+					<th scope="col">Pic</th>
+				</tr>
+				</thead>
+				<%#= turbo_frame_tag "search-results" do %>
+				<tbody id="products">
+                    <%= render @order_details %>
+				</tbody>
+				<%# end %>
+			</table>
+			<% @order_details.each do |detail|%>
+				<% @total += detail.product.price * detail.product_quantity %>
+			<% end %>
+			<p>
+					Total: 	<%= @total %>
+			</p>
+			<%= link_to "Back", orders_path%>
+		</div>
+	</div>
+</body>

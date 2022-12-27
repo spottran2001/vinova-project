@@ -82,3 +82,9 @@ function changeCurrentImage (newImage) {
 listOfImages.forEach(function(image) {
 	image.addEventListener('click', changeCurrentImage);
 });
+
+
+$('exampleModal').modal({
+    backdrop: 'static',
+    keyboard: false
+  });

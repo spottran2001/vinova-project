@@ -1,8 +1,10 @@
 class OrdersController < ApplicationController
+  before_action :authenticate_admin!
   before_action :current_order, only: [:show, :destroy]
 
   def index
-    @orders = Order.all.order(:id)
+    filtered = Order.search(params)
+    @pagy, @orders = pagy(filtered.all, items: 10)
   end
 
   def new
@@ -18,7 +20,8 @@ class OrdersController < ApplicationController
   end
 
   def show
-    @order = Order.find(params[:id])
+    @order_details = Order.find(params[:id]).order_details
+    @total = 0
   end
 
   def destroy

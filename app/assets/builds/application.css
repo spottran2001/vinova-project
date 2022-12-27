@@ -19243,3 +19243,114 @@ p.product-details-price{
   padding:10px 60px;
   margin:0px 20px;
 }
+
+.pagy-nav,
+.pagy-nav-js {
+  display: flex;
+  margin-left: 0.5rem;
+  margin-top: 1rem;
+}
+
+.pagy-nav .page a,
+.pagy-nav .page.active,
+.pagy-nav .page.prev.disabled,
+.pagy-nav .page.next.disabled,
+.pagy-nav-js .page a,
+.pagy-nav-js .page.active,
+.pagy-nav-js .page.prev.disabled,
+.pagy-nav-js .page.next.disabled {
+  display: block;
+  border-radius: 0.5rem;
+  padding-left: 0.75rem; /* 12px */
+  padding-right: 0.75rem;
+  padding-top: 0.25rem; /* 4px */
+  padding-bottom: 0.25rem;
+  font-size: 0.875rem; /* 14px */
+  line-height: 1.25rem;
+  color: rgb(107 114 128);
+  font-weight: 600;
+  background-color: rgb(229 231 235);
+  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+}
+
+.pagy-nav .page.prev.disabled,
+.pagy-nav .page.next.disabled,
+.pagy-nav-js .page.prev.disabled,
+.pagy-nav-js .page.next.disabled {
+  color: rgb(156 163 175);
+  cursor: default;
+}
+
+.pagy-nav .page.active,
+.pagy-nav-js .page.active {
+  cursor: default;
+  color: rgb(255 255 255);
+  background-color: rgb(156 163 175);
+}
+
+
+.pagy-combo-nav-js {
+  max-width: max-content;
+  border-radius: 9999px;
+  padding-left: 0.75rem; /* 12px */
+  padding-right: 0.75rem;
+  padding-top: 0.25rem; /* 4px */
+  padding-bottom: 0.25rem;
+  font-size: 0.875rem; /* 14px */
+  line-height: 1.25rem;
+  color: rgb(107 114 128);
+  font-weight: 600;
+  background-color: rgb(229 231 235);
+  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+}
+
+.pagy-combo-nav-js .pagy-combo-input {
+  background-color: rgb(255 255 255);
+  padding-left: 0.5rem; /* 8px */
+  padding-right: 0.5rem;
+  border-radius: 0.125rem; 
+}
+
+.pagy-combo-nav-js .page.prev,
+.pagy-combo-nav-js .page.next {
+}
+
+.pagy-combo-nav-js .page.prev.disabled,
+.pagy-combo-nav-js .page.next.disabled {
+  cursor: default;
+  color: rgb(156 163 175);
+  display: none;
+}
+
+
+.pagy-combo-nav-js li.page-item.disabled{
+  display: none !important;
+}
+
+.pagy-combo-nav-js li.page-item{
+  color: #231F20;
+}
+
+.modal-header{
+  width: 560px; 
+  height:360px; 
+  background-image:url("/app/assets/images/Card_base.png");
+  background-size: cover;
+}
+
+.modal-header button.btn-close{
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  border-radius: 9999%;
+  color: white;
+  background-color: #4D4D4E;
+}
+span.modal-span{
+  font-family: 'Montserrat', sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 140%;
+  text-align: center;
+}

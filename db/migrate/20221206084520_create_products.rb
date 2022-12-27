@@ -6,7 +6,7 @@ class CreateProducts < ActiveRecord::Migration[7.0]
       t.integer :discount_percentage, default: 0
       t.integer :quantity_sold, default: 0
       t.string :company
-      t.string :categories, array: true, default:[]
+      t.string :categories, array: true
       t.string :product_types, array: true, default:[]
       t.text :description
       t.text :return_policy

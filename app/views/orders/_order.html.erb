@@ -1,14 +1,15 @@
-<%= turbo_frame_tag order do %>
-  <tr>
-    <th scope="row"><%= order.id %></th>
-    <td><%= order.status %></td>
-    <td><%= order.user.email %></td>
-    <td style="display:flex">
-      <% if action_name != "show" %>
-        <%= button_to order_path(order), method: :delete, style: "display:inline-block; margin-left:4px; border:none; background-color:white" do %>
-          <svg style="display:inline-block; width:40px; height:40px" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path></svg>
-        <% end %>
+<tr id="<%= dom_id(order) %>" data-stream-enter-class="animate-item-in" data-stream-exit-class="animate-item-out">
+  <th scope="row"><%= order.id %></th>
+  <td><%= order.status %></td>
+  <td><%= order.user.email %></td>
+  <td style="display:flex">
+    <% if action_name != "show" %>
+      <%= link_to order do %>
+        <svg style="display:inline-block; width:40px; height:40px" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"></path></svg>
       <% end %>
-    </td>
-  </tr>
-<% end %>
+      <%= button_to order_path(order), method: :delete, style: "display:inline-block; margin-left:4px; border:none; background-color:white" do %>
+        <svg style="display:inline-block; width:40px; height:40px" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path></svg>
+      <% end %>
+    <% end %>
+  </td>
+</tr>

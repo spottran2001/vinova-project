@@ -1,40 +1,34 @@
 <body>
-    <%= render "site/header"%>
-    <div>
-        <div style="flex-grow:1">
-        <p style="color: green"><%= notice %></p>
+	<%= render "site/header"%>
+	<div>
+		<div style="flex-grow:1">
+			<p style="color: green"><%= notice %></p>
 
-        <div style="display:flex; justify-content:space-between; width:100%">
-            <div>
-            <h1>Cart</h1>
-            <%= link_to "Checkout", new_checkout_path %>
-            </div>
-            <div>
-            <%= form_tag products_path, method: :get do |f| %>
-                <%= text_field_tag "query", nil, placeholder: "Search...", class: "input input-border", style: "width:250px; height:37px"%>
-                <%= submit_tag "Search", class: "btn btn-primary"%>
-            <% end %>
-            </div>
-        </div>
-        <table class="table">
-            <thead>
-            <tr>
-                <th scope="col">Name</th>
-                <th scope="col">Amount</th>
-                <th scope="col">Price</th>
-                <th scope="col">Pic</th>
-            </tr>
-            </thead>
-            <%#= turbo_frame_tag "search-results" do %>
-            <tbody id="products">
-                <% if @cart_details.blank? %>
-                    <h1>No thing in your cart</h1>
-                <% else %>
-                    <%= render @cart_details %>
-                <% end %>
-            </tbody>
-            <%# end %>
-        </table>
-        </div>
-    </div>
+			<div style="display:flex; justify-content:space-between; width:100%">
+				<div>
+					<h1>Cart</h1>
+					<%= link_to "Checkout", new_checkout_path %>
+				</div>
+			</div>
+			<table class="table">
+				<thead>
+				<tr>
+					<th scope="col">Name</th>
+					<th scope="col">Amount</th>
+					<th scope="col">Price</th>
+					<th scope="col">Pic</th>
+				</tr>
+				</thead>
+				<%#= turbo_frame_tag "search-results" do %>
+				<tbody id="products">
+						<% if @cart_details.blank? %>
+								<h1>No thing in your cart</h1>
+						<% else %>
+								<%= render @cart_details %>
+						<% end %>
+				</tbody>
+				<%# end %>
+			</table>
+		</div>
+	</div>
 </body>

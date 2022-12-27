@@ -1,5 +1,7 @@
 class CartsController < ApplicationController
+  before_action :authenticate_user!, only: [:index]
   before_action :check_cart, only: [:index]
+
   def index
     @cart_details = current_user.cart.cart_details
   end

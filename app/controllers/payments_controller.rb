@@ -1,4 +1,6 @@
 class PaymentsController < ApplicationController
+	before_action :authenticate_user!, only: [:new]
+	
 	def index
 	end
 
@@ -12,7 +14,6 @@ class PaymentsController < ApplicationController
 		if @payment.save
 			@payment.order.update(status: 'completed')
 
-			redirect_to root_path
 			#redirect_to new_payment_path, :order => @order
 		else
 			render :new, status: :unprocessable_entity

@@ -1,10 +1,10 @@
 class UsersController < ApplicationController
-
+  before_action :authenticate_admin!
   before_action :current_user, only: [:edit, :update, :destroy]
 
   def index
-    @users = User.all.order(:id)
-
+    filtered = User.search(params)
+    @pagy, @users = pagy(filtered.all, items: 10)
   end
 
   def show
@@ -15,7 +15,8 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user = User.new(user_params)
+    #@user = User.create_without_callbacks(user_params)
+    @user = User.create_without_callbacks(user_params)
 
     if @user.save
 

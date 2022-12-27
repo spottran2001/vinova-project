@@ -1,5 +1,6 @@
 class SiteController < ApplicationController
   before_action :current_product, only: [:show] 
+  before_action :authenticate_user!, only: [:add_to_cart]
 
   #home page
   def index
@@ -27,8 +28,14 @@ class SiteController < ApplicationController
   end
 
   def collections
-    @products = Product.all
-    @size = @products.size
+    if params[:categories].blank? && params[:filtered].blank?
+      filtered = Product.all
+      @pagy, @products = pagy(filtered.all, items: 12)
+    else
+      puts'ccc'
+    end
+
+    @size = filtered.size
   end
 
   def new

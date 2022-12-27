@@ -65,10 +65,12 @@
               <button style="border: 0px; background-color: #FFFFFF; position:relative">
                 <%= image_tag("shopping_img.png", size: "19x22")%>
                   <span style="position: absolute; left:12px; top:5px; color:red">
-                    <% if current_user.cart.blank? %> 
-                      0
-                    <% else %>
-                      <%= current_user.cart.cart_details.count %>
+                    <% if user_signed_in?%>
+                      <% if current_user.cart.blank? %> 
+                        0
+                      <% else %>
+                        <%= current_user.cart.cart_details.count %>
+                      <% end %>
                     <% end %>
                   </span>
               </button>

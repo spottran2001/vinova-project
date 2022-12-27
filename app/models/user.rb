@@ -7,4 +7,13 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+  validates :email, presence: true, uniqueness: true
+  validates :password, presence: true
+  validates :password_confirmation, presence: true
+
+  def self.search(params)
+    params[:query].blank? ? all : where(
+      "email LIKE ?", "%#{sanitize_sql_like(params[:query])}%"
+    )
+  end
 end

@@ -1,8 +1,10 @@
 class ProductsController < ApplicationController
+  before_action :authenticate_admin!
   before_action :current_product, only: [:show, :edit, :update, :destroy]
 
   def index
-    @products = Product.search(params)
+    filtered = Product.search(params)
+    @pagy, @products = pagy(filtered.all, items: 10)
   end
 
   def show
@@ -56,7 +58,7 @@ class ProductsController < ApplicationController
     params
     .require(:product)
     .permit(:name, :price, :discount_percentage,
-            :categories, :company, :product_type, 
+            {:categories => [] }, :company, :product_types, 
             :description, :return_policy, :citizen_policy,
             product_photos_attributes: [:id, :product_id, :photo])
   end

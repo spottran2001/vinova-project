@@ -1,0 +1,8 @@
+<%= turbo_frame_tag order_detail do %>
+  <tr>
+    <td><%= order_detail.product.name %></td>
+    <td><%= order_detail.product_quantity %></td>
+    <td><%= order_detail.product.price * order_detail.product_quantity%></td>
+    <td><%= image_tag(order_detail.product.product_photos.first.photo.url.to_s, size:"40") %></td>
+  </tr>
+<% end %>
