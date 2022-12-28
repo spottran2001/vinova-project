@@ -14,12 +14,18 @@ Rails.application.routes.draw do
     resources :product_photos
     
   end
-  resources :users
+  
+  resources :users do
+    collection do
+      post 'add_user'
+    end
+  end
 
   resources :site do 
     collection do
       get 'collections'
       post 'add_to_cart'
+      post 'send_mail'
 
       resources :orders do 
         resources :payments, only: [:create, :new]

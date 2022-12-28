@@ -19,6 +19,10 @@ class CheckoutsController < ApplicationController
              .create(:product_price => details.product_price,
                      :product_quantity => details.product_quantity,
                      :product_id => details.product_id)
+        product_quantity_sold = details.product.quantity_sold
+              
+
+        details.product.update(quantity_sold: product_quantity_sold += details.product_quantity)
       end
       current_user.cart.destroy
 

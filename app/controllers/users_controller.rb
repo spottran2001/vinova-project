@@ -14,9 +14,8 @@ class UsersController < ApplicationController
     @user = User.new
   end
 
-  def create
-    #@user = User.create_without_callbacks(user_params)
-    @user = User.create_without_callbacks(user_params)
+  def add_user
+    @user = User.new(user_params)
 
     if @user.save
 

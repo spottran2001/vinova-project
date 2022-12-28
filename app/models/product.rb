@@ -13,9 +13,23 @@ class Product < ApplicationRecord
   validates :categories, presence: true
   #validate: tittle max 100 charts
 
+  private
+
   def self.search(params)
     params[:query].blank? ? all : where(
       "name LIKE ?", "%#{sanitize_sql_like(params[:query])}%"
     )
+  end
+
+  def self.categories_search(params)
+    where("? = ANY (categories)",params)
+  end
+
+  def self.product_sort(params)
+    order("#{params} DESC")
+  end
+
+  def self.filtered_search(params)
+    order("#{params[:fillter]} #{params[:sort]}")
   end
 end

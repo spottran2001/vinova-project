@@ -3,6 +3,7 @@
   <td><%= product.name %></td>
   <td><%= product.price %></td>
   <td><%= product.company %></td>
+  <td><%= product.quantity_sold %></td>
   <td><%= image_tag(product.product_photos.first.photo.url.to_s, size:"40") %></td>
   <td style="display:flex">
     <% if action_name != "show" %>

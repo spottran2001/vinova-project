@@ -7,8 +7,8 @@
     </div>
     <div class="col-6 col-md-2 mb-4">
       <ul class="nav flex-column">
-        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Home</a></li>
-        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Collection</a></li>
+        <li class="nav-item mb-2"><%= link_to "Home", root_path, class:'nav-link p-0 text-muted'%></li>
+        <li class="nav-item mb-2"><%= link_to "Collection", collections_site_index_path, class:'nav-link p-0 text-muted'%></li>
         <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Products</a></li>
       </ul>
     </div>
@@ -22,13 +22,17 @@
     </div>
 
     <div class="col-md-3 offset-md-1 mb-3" style="margin: 0px;">
-      <form>
+      <div>
         <p>Be the first to know about our biggest and the best sales. We'll never send more than one email a month.</p>
         <div class="d-flex flex-column flex-sm-row w-100 gap-2" style="border-bottom: 1px solid #222222; padding-bottom:10px">
-          <input type="text" class="form-control" placeholder="Enter your Email" style="border: 0px; padding: 0px; font-size: 18px;line-height: 22px;">
-          <button style="border: 0px; background-color: #FFFFFF;">
-            <%= image_tag("ic_mail_outline_24px.png", size: "28x22")%>
-          </button>
+          <%= simple_form_for :site, url: send_mail_site_index_path, method: :post do |f| %>
+            <div style="display:flex">
+              <%= f.input :email, label: false, input_html: {class: 'mail-form-control', placeholder:"Enter your Email"} %>
+              <%= button_tag(type:'submit', style: "border: 0px; background-color: #FFFFFF; padding: 0px") do %>
+                <%= image_tag("ic_mail_outline_24px.png", size: "28x22")%>
+              <% end %>
+          <% end %>
+        </div>
         </div>
         <ul class="nav col-md-4 d-flex" style="margin: 10px; flex-wrap: nowrap; justify-content: space-around; padding-left: 25px">
             <li class="ms-3">
@@ -52,7 +56,7 @@
               </a>
             </li>
           </ul>
-      </form>
+      </div>
     </div>
   </div>
 

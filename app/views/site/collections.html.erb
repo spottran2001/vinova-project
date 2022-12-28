@@ -19,12 +19,16 @@
 								</button>
 							</div>
 							<div class="collapse" id="companyFillter">
-								<div class="card card-body">
-									A > Z
-								</div>
-								<div class="card card-body">
-									Z > A
-								</div>
+								<%= link_to collections_site_index_path(request.parameters.merge(:filtered => {:fillter => 'company', :sort => 'ASC'})) do %>
+									<div class="card card-body">
+										A > Z
+									</div>
+								<% end %>
+								<%= link_to collections_site_index_path(request.parameters.merge(:filtered => {:fillter => 'company', :sort => 'DESC'})) do %>
+									<div class="card card-body">
+										Z > A
+									</div>
+								<% end %>
 							</div>
 						</div>
 						<div class="fillter-drop">
@@ -37,12 +41,16 @@
 								</button>
 							</div>
 							<div class="collapse" id="priceFillter">
-								<div class="card card-body">
-									UP > DOWN
-								</div>
-								<div class="card card-body">
-									DOWN > UP
-								</div>
+								<%= link_to collections_site_index_path(request.parameters.merge(:filtered => {:fillter => 'price', :sort => 'ASC'})) do %>
+									<div class="card card-body">
+										UP > DOWN
+									</div>
+								<% end %>
+								<%= link_to collections_site_index_path(request.parameters.merge(:filtered => {:fillter => 'price', :sort => 'DESC'})) do %>
+									<div class="card card-body">
+										DOWN > UP
+									</div>
+								<% end %>
 							</div>
 						</div>
 						<div class="fillter-drop">
@@ -55,12 +63,16 @@
 								</button>
 							</div>
 							<div class="collapse" id="categoriesFillter">
-								<div class="card card-body">
-								A > Z
-							</div>
-							<div class="card card-body">
-								Z > A
-							</div>
+								<%= link_to collections_site_index_path(request.parameters.merge(:filtered => {:fillter => 'categories', :sort => 'ASC'})) do %>
+									<div class="card card-body">
+										A > Z
+									</div>
+								<% end %>
+								<%= link_to collections_site_index_path(request.parameters.merge(:filtered => {:fillter => 'categories', :sort => 'DESC'})) do %>
+									<div class="card card-body">
+										Z > A
+									</div>
+								<% end %>
 							</div>
 						</div>
 					</div>
@@ -68,24 +80,32 @@
 						<div class="collection" style="display:inline">
 							<ul style="padding:0px;display:flex; justify-content: space-between;">
 								<li class="nav-item" style="display:inline">
-									<button class="collection-btn">
-										Everyday Essentials
-									</button>
+									<%= link_to collections_site_index_path(request.parameters.merge(:categories => 'Everyday Essentials')) do %>
+										<button class="collection-btn">
+											Everyday Essentials
+										</button>
+									<% end %>
 								</li>
 								<li class="nav-item" style="display:inline">
-									<button class="collection-btn">
-										Cleaning Essentials
-									</button>
+									<%= link_to collections_site_index_path(request.parameters.merge(:categories => 'Cleaning Essentials')) do %>
+										<button class="collection-btn">
+											Cleaning Essentials
+										</button>
+									<% end %>
 								</li>
 								<li class="nav-item" style="display:inline">
-									<button class="collection-btn">
-										Immunity & Health
-									</button>
+									<%= link_to collections_site_index_path(request.parameters.merge(:categories => 'Immunity & Health')) do %>
+										<button class="collection-btn">
+											Immunity & Health
+										</button>
+									<% end %>
 								</li>
 								<li class="nav-item" style="display:inline">
-									<button class="collection-btn">
-										Vitamin Supplements
-									</button>
+									<%= link_to collections_site_index_path(request.parameters.merge(:categories => 'Vitamin Supplements')) do %>
+										<button class="collection-btn">
+											Vitamin Supplements
+										</button>
+										<% end %>
 								</li>
 							</ul>
 						</div>
@@ -105,12 +125,18 @@
 										</button>
 									</div>
 									<div class="collapse" id="collapseReturnPolicy" style="border: 0.5px solid #231F20;">
-										<div class="card card-body">
-											NAME
-										</div>
-										<div class="card card-body">
-											PRICE
-										</div>
+										<% if params %>
+											<%= link_to collections_site_index_path(request.parameters.merge(:sort => 'name')) do %>
+												<div class="card card-body">
+													NAME
+												</div>
+											<% end %>
+										<% end %>
+										<%= link_to collections_site_index_path(request.parameters.merge(:filtered => 'price')) do %>
+											<div class="card card-body">
+												PRICE
+											</div>
+										<% end %>
 									</div>
 								</div>
 							</div>

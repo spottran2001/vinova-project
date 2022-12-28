@@ -8,7 +8,9 @@
 				<span style="color: #E2342D; margin-left:170px">MACC </span>
 				<span style="color: #231F20">TOP SELLINGS</span>
 			</div>
-			<button class="promo-btn" style="margin-right:50px; border:0">VIEW ALL</button>
+			 <%= link_to collections_site_index_path(:colection => 'quantity_sold'), :class =>"nav-link active" do %>
+				<button class="promo-btn" style="margin-right:50px; border:0">VIEW ALL</button>
+			<% end %>
 		</div>
 		<div class="promo-carousel-content" style="display:flex">
 			<div id="carouselExampleControls3" class="carousel slide" data-bs-ride="carousel" style="display:flex">

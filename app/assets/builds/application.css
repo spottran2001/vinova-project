@@ -19354,3 +19354,16 @@ span.modal-span{
   line-height: 140%;
   text-align: center;
 }
+
+input.mail-form-control{
+  border: 0px; 
+  padding: 0px; 
+  font-size: 18px;
+  font-family: 'Montserrat', sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 22px;
+  /* identical to box height */
+  color: #222222;
+  margin-right: 160px;
+}

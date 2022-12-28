@@ -28,13 +28,25 @@ class SiteController < ApplicationController
   end
 
   def collections
-    if params[:categories].blank? && params[:filtered].blank?
-      filtered = Product.all
-      @pagy, @products = pagy(filtered.all, items: 12)
-    else
-      puts'ccc'
+    filtered = Product.all
+
+    if !params[:collection].blank?
+      filtered = filtered.categories_search(params[:collection])
+    end
+    
+    if !params[:categories].blank?
+      filtered = filtered.categories_search(params[:categories])
     end
 
+    if !params[:sort].blank?
+      filtered = filtered.product_sort(params[:sort])
+    end
+
+    if !params[:filtered].blank?
+      filtered = filtered.filtered_search(params[:filtered])
+    end
+
+    @pagy, @products = pagy(filtered.all, items: 1)
     @size = filtered.size
   end
 
@@ -64,6 +76,10 @@ class SiteController < ApplicationController
     flash[:notice] = "SUCCESSFULLY ADDED TO CART. "
 
     redirect_to site_path(product_id)
+  end
+
+  def send_mail
+    ExampleMailer.sample_email(params[:site][:email]).deliver
   end
 
   private

@@ -1,21 +1,21 @@
-<%= form_for(@user, html: {multipart: true}) do |f| %>
-  <div class="field">
-    <%= f.label :email %>
-    <%= f.text_field :email %>
-  </div>
-  <div class="field">
-    <%= f.label :password %>
-    <%= f.text_field :password %>
-  </div>
-  <div class="field">
-    <%= f.label :password_confirmation %>
-    <%= f.text_field :password_confirmation %>
-  </div>
+<div style="width: 100%; display:flex; justify-content:center">
+  <%= simple_form_for @user, url: add_user_users_path, method: :post do |f| %>
+    <div>
+      <div class="field">
+        <%= f.input :email%>
+      </div>
+      <div class="field">
+        <%= f.input :password %>
+      </div>
+      <div class="field">
+        <%= f.input :password_confirmation %>
+      </div>
 
-  <div id="preview"></div>
+      <div id="preview"></div>
 
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>
-
+      <div class="actions">
+        <%= f.submit %>
+      </div>
+    </div>
+  <% end %>
+</div>
