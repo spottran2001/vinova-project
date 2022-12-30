@@ -19,12 +19,12 @@
 								</button>
 							</div>
 							<div class="collapse" id="companyFillter">
-								<%= link_to collections_site_index_path(request.parameters.merge(:filtered => {:fillter => 'company', :sort => 'ASC'})) do %>
+								<%= link_to collections_site_index_path(request.parameters.merge(:filtered => {:fillter => 'company', :filter_sort => 'ASC'})) do %>
 									<div class="card card-body">
 										A > Z
 									</div>
 								<% end %>
-								<%= link_to collections_site_index_path(request.parameters.merge(:filtered => {:fillter => 'company', :sort => 'DESC'})) do %>
+								<%= link_to collections_site_index_path(request.parameters.merge(:filtered => {:fillter => 'company', :filter_sort => 'DESC'})) do %>
 									<div class="card card-body">
 										Z > A
 									</div>
@@ -41,12 +41,12 @@
 								</button>
 							</div>
 							<div class="collapse" id="priceFillter">
-								<%= link_to collections_site_index_path(request.parameters.merge(:filtered => {:fillter => 'price', :sort => 'ASC'})) do %>
+								<%= link_to collections_site_index_path(request.parameters.merge(:filtered => {:fillter => 'price', :filter_sort => 'ASC'})) do %>
 									<div class="card card-body">
 										UP > DOWN
 									</div>
 								<% end %>
-								<%= link_to collections_site_index_path(request.parameters.merge(:filtered => {:fillter => 'price', :sort => 'DESC'})) do %>
+								<%= link_to collections_site_index_path(request.parameters.merge(:filtered => {:fillter => 'price', :filter_sort => 'DESC'})) do %>
 									<div class="card card-body">
 										DOWN > UP
 									</div>
@@ -63,12 +63,12 @@
 								</button>
 							</div>
 							<div class="collapse" id="categoriesFillter">
-								<%= link_to collections_site_index_path(request.parameters.merge(:filtered => {:fillter => 'categories', :sort => 'ASC'})) do %>
+								<%= link_to collections_site_index_path(request.parameters.merge(:filtered => {:fillter => 'categories', :filter_sort => 'ASC'})) do %>
 									<div class="card card-body">
 										A > Z
 									</div>
 								<% end %>
-								<%= link_to collections_site_index_path(request.parameters.merge(:filtered => {:fillter => 'categories', :sort => 'DESC'})) do %>
+								<%= link_to collections_site_index_path(request.parameters.merge(:filtered => {:fillter => 'categories', :filter_sort => 'DESC'})) do %>
 									<div class="card card-body">
 										Z > A
 									</div>
@@ -132,7 +132,7 @@
 												</div>
 											<% end %>
 										<% end %>
-										<%= link_to collections_site_index_path(request.parameters.merge(:filtered => 'price')) do %>
+										<%= link_to collections_site_index_path(request.parameters.merge(:sort => 'price')) do %>
 											<div class="card card-body">
 												PRICE
 											</div>

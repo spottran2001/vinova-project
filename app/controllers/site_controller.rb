@@ -46,7 +46,7 @@ class SiteController < ApplicationController
       filtered = filtered.filtered_search(params[:filtered])
     end
 
-    @pagy, @products = pagy(filtered.all, items: 1)
+    @pagy, @products = pagy(filtered.all, items: 12)
     @size = filtered.size
   end
 

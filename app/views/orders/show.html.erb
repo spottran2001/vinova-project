@@ -30,12 +30,12 @@
 						<% @total += detail.product_price * detail.product_quantity %>
 					<% end %>
 					<p>
-							Total: 	<%= @total %>
+						Total: 	<%= @total %>
 					</p>
 					<div style="display:flex; justify-content: flex-end;">
-						<%= link_to users_path, style:"text-decoration:none; color:#231F20" do %>
-						<span><%= image_tag("arrow_img", size: "10x15")%></span>
-						<span>Go back</span>
+						<%= link_to orders_path, style:"text-decoration:none; color:#231F20" do %>
+							<span><%= image_tag("arrow_img", size: "10x15")%></span>
+							<span>Go back</span>
 						<% end %>
 					</div>
 				</div>

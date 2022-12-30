@@ -30,6 +30,6 @@ class Product < ApplicationRecord
   end
 
   def self.filtered_search(params)
-    order("#{params[:fillter]} #{params[:sort]}")
+    order("#{params[:fillter]} #{params[:filter_sort]}")
   end
 end

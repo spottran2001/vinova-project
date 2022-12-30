@@ -25,7 +25,7 @@ class ProductsController < ApplicationController
           @product_photo = @product.product_photos.create!(:photo => a)
         end
       end
-      redirect_to @product
+      redirect_to products_path
     else
       render :new, status: :unprocessable_entity
     end
