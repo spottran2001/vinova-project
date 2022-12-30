@@ -1,11 +1,14 @@
-<div style="display:flex; justify-content:start; align-items: center;">
-	<div style="width:100%; border: 0.5px solid #231F20; display:flex; justify-content:center">
-		<%= link_to "User", users_path%>
+<header class="navbar navbar-dark sticky-top bg-light flex-md-nowrap shadow" style="padding:1px">
+  	<div>
+		<%= form_tag products_path, method: :get, data: { turbo_frame: "search-results", turbo_action: "advance",
+		controller: "search", action: "input->search#submit"} do |f| %>
+		<%= text_field_tag "query", nil, placeholder: "Search...", class: "input input-border", style: "width:550px; height:37px"%>
+		<%= submit_tag "Search", class: "btn btn-primary"%>
+		<% end %>
 	</div>
-	<div style="width:100%; border: 0.5px solid #231F20; display:flex; justify-content:center">
-		<%= link_to "Product", products_path%>
-	</div>    
-	<div style="width:100%; border: 0.5px solid #231F20; display:flex; justify-content:center">
-		<%= link_to "Order", orders_path%>
+	<div class="navbar-nav">
+		<div class="nav-item text-nowrap">
+		<a class="nav-link px-3" href="#" style="color:red">Sign out</a>
+		</div>
 	</div>
-</div>
+</header>

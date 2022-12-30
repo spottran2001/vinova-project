@@ -19367,3 +19367,11 @@ input.mail-form-control{
   color: #222222;
   margin-right: 160px;
 }
+.sidebar .nav-link {
+  font-weight: 500;
+  color: #727272;
+}
+.sidebar .nav-link:hover{
+  color: #333;
+}
+

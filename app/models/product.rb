@@ -1,7 +1,7 @@
 class Product < ApplicationRecord
   has_many :product_photos, dependent: :destroy
   has_many :cart_details, dependent: :destroy
-  has_many :order_details, dependent: :destroy
+  has_many :order_details
   accepts_nested_attributes_for :product_photos, allow_destroy: true, reject_if: proc { |attributes| attributes['photo'].blank? }
 
   validates :name, presence: true

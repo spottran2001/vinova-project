@@ -2,7 +2,9 @@
   <tr>
     <td><%= cart_detail.product.name %></td>
     <td><%= cart_detail.product_quantity %></td>
-    <td><%= cart_detail.product.price * cart_detail.product_quantity%></td>
+    <td><%= cart_detail.product.price %></td>
+    <td><%= cart_detail.product.discount_percentage %>%</td>
+    <td><%= cart_detail.product.price * cart_detail.product_quantity * (100-cart_detail.product.discount_percentage) / 100%></td>
     <td><%= image_tag(cart_detail.product.product_photos.first.photo.url.to_s, size:"40") %></td>
     <td style="display:flex">
       <%= button_to [cart_detail], method: :delete, style: "display:inline-block; margin-left:4px; border:none; background-color:white" do %>

@@ -16,8 +16,10 @@ class CheckoutsController < ApplicationController
 
       current_user.cart.cart_details.each do |details|
         @order.order_details
-             .create(:product_price => details.product_price,
+             .create(:product_price => details.product_price * (100-details.product.discount_percentage)/100,
                      :product_quantity => details.product_quantity,
+                     :product_name => details.product.name,
+                     :photo => details.product.product_photos.first.photo,
                      :product_id => details.product_id)
         product_quantity_sold = details.product.quantity_sold
               

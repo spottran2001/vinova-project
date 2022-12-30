@@ -1,33 +1,45 @@
-<body>
-	<%= render "site/header"%>
-	<div>
-		<div style="flex-grow:1">
-			<p style="color: green"><%= notice %></p>
+<body style="width:100%; height:1080px">
+	<div style="display:flex; width:100%; height:100%">
+		<div style="flex-basis:250px; color: white; border-right: 1px solid #ced4da; margin-right:1px">
+		<%= render "site/sidebarMenu"%>
+		</div>
+		<div style="flex-grow: 1">
+			<%= render "site/admin_header"%>
+			<div>
+				<div style="flex-grow:1">
+					<p style="color: green"><%= notice %></p>
 
-			<div style="display:flex; justify-content:space-between; width:100%">
+					<div style="display:flex; justify-content:space-between; width:100%">
+					</div>
+					<table class="table">
+						<thead>
+						<tr>
+							<th scope="col">Name</th>
+							<th scope="col">Amount</th>
+							<th scope="col">Price</th>
+							<th scope="col">Pic</th>
+						</tr>
+						</thead>
+						<%#= turbo_frame_tag "search-results" do %>
+						<tbody id="products">
+							<%= render @order_details %>
+						</tbody>
+						<%# end %>
+					</table>
+					<% @order_details.each do |detail|%>
+						<% @total += detail.product_price * detail.product_quantity %>
+					<% end %>
+					<p>
+							Total: 	<%= @total %>
+					</p>
+					<div style="display:flex; justify-content: flex-end;">
+						<%= link_to users_path, style:"text-decoration:none; color:#231F20" do %>
+						<span><%= image_tag("arrow_img", size: "10x15")%></span>
+						<span>Go back</span>
+						<% end %>
+					</div>
+				</div>
 			</div>
-			<table class="table">
-				<thead>
-				<tr>
-					<th scope="col">Name</th>
-					<th scope="col">Amount</th>
-					<th scope="col">Price</th>
-					<th scope="col">Pic</th>
-				</tr>
-				</thead>
-				<%#= turbo_frame_tag "search-results" do %>
-				<tbody id="products">
-                    <%= render @order_details %>
-				</tbody>
-				<%# end %>
-			</table>
-			<% @order_details.each do |detail|%>
-				<% @total += detail.product.price * detail.product_quantity %>
-			<% end %>
-			<p>
-					Total: 	<%= @total %>
-			</p>
-			<%= link_to "Back", orders_path%>
 		</div>
 	</div>
 </body>

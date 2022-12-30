@@ -5,30 +5,34 @@
 			<p style="color: green"><%= notice %></p>
 
 			<div style="display:flex; justify-content:space-between; width:100%">
-				<div>
-					<h1>Cart</h1>
-					<%= link_to "Checkout", new_checkout_path %>
-				</div>
+				<h1>Cart</h1>
+				<%= button_to "Checkout", new_checkout_path, method: :get, class:"btn btn-secondary btn-lg"%>
 			</div>
-			<table class="table">
-				<thead>
-				<tr>
-					<th scope="col">Name</th>
-					<th scope="col">Amount</th>
-					<th scope="col">Price</th>
-					<th scope="col">Pic</th>
-				</tr>
-				</thead>
-				<%#= turbo_frame_tag "search-results" do %>
-				<tbody id="products">
-						<% if @cart_details.blank? %>
-								<h1>No thing in your cart</h1>
-						<% else %>
-								<%= render @cart_details %>
-						<% end %>
-				</tbody>
-				<%# end %>
-			</table>
+			<% if @cart_details.blank? %>
+				<h2>No thing in your cart!</h2>
+				<%= link_to root_path, style:"text-decoration:none; color:#231F20" do %>
+					<span><%= image_tag("arrow_img", size: "10x15", style:"transform: rotate(180deg);")%></span>
+					<span>Go back to Shopping</span>
+				<% end %>
+			<% else %>
+				<table class="table">
+					<thead>
+					<tr>
+						<th scope="col">Name</th>
+						<th scope="col">Amount</th>
+						<th scope="col">Price</th>
+						<th scope="col">Discount Percent</th>
+						<th scope="col">Price after Discount</th>
+						<th scope="col">Product Picture</th>
+					</tr>
+					</thead>
+					<%#= turbo_frame_tag "search-results" do %>
+					<tbody id="products">
+						<%= render @cart_details %>
+					</tbody>
+					<%# end %>
+				</table>
+			<% end %>
 		</div>
 	</div>
 </body>

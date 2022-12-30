@@ -1,7 +1,27 @@
-<h1>Editing user</h1>
+<body style="width:100%; height:1080px">
+  <div style="display:flex; width:100%; height:100%">
+    <div style="flex-basis:250px; color: white; border-right: 1px solid #ced4da; margin-right:1px">
+      <%= render "site/sidebarMenu"%>
+    </div>
+    <div style="flex-grow: 1">
+      <%= render "site/admin_header"%>
+      <div>
+        <p style="color: green"><%= notice %></p>
 
-<%= render "form", user: @user %>
-
-<div>
-  <%= link_to "Back to users", users_path %>
-</div>
+        <div style="display:flex; justify-content:space-between; width:100%">
+          <h1>Editing User</h1>
+        </div>
+        <div>
+        <%= render "form", user: @user %>
+        </div>
+      </div>
+      <div style="display:flex; justify-content: flex-end;">
+        <%= link_to users_path, style:"text-decoration:none; color:#231F20" do %>
+          <span><%= image_tag("arrow_img", size: "10x15")%></span>
+          <span>Go back</span>
+        <% end %>
+      </div>
+    </div>
+    
+  </div>
+</body>

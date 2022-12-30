@@ -1,39 +1,35 @@
 <body>
-  <div>
-    <%= render "site/admin_header"%>
-    <div>
-      <p style="color: green"><%= notice %></p>
+  <div style="display:flex; width:100%">
+    <div style="flex-basis:250px; bckground-color:red; color: white">
+      <%= render "site/sidebarMenu"%>
+    </div>
+    <div style="flex-grow: 1">
+      <%= render "site/admin_header"%>
+      <div>
+        <p style="color: green"><%= notice %></p>
 
-      <div style="display:flex; justify-content:space-between; width:100%">
-        <div>
+        <div style="display:flex; justify-content:space-between; width:100%">
           <h1>Users</h1>
-          <%= link_to "New user", new_user_path %>
+          <%= button_to "Create", new_user_path, method: :get, class:"btn btn-secondary btn-lg"%>
         </div>
-        <div>
-          <%= form_tag users_path, method: :get, data: {turbo_frame: "search-results", turbo_action: "advance",
-          controller: "search", action: "input->search#submit"} do |f| %>
-            <%= text_field_tag "query", nil, placeholder: "Search...", class: "input input-border", style: "width:250px; height:37px"%>
-            <%= submit_tag "Search", class: "btn btn-primary"%>
-          <% end %>
-        </div>
+        <%= turbo_frame_tag "search-results" do %>
+          <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">#Id</th>
+                <th scope="col">Email</th>
+                <th scope="col">Date Create</th>
+              </tr>
+            </thead>
+            <tbody id="users" data-controller="users" data-action="">
+                <%= render @users %>
+            </tbody>
+          </table>
+          <div class="pagination" style="display:flex; justify-content: center">
+            <%== render partial: 'shared/pagination', locals: {pagy: @pagy} %>
+          </div>
+        <% end %>
       </div>
-      <%= turbo_frame_tag "search-results" do %>
-        <table class="table">
-          <thead>
-            <tr>
-              <th scope="col">#Id</th>
-              <th scope="col">Email</th>
-              <th scope="col">Date Create</th>
-            </tr>
-          </thead>
-          <tbody id="users" data-controller="users" data-action="">
-              <%= render @users %>
-          </tbody>
-        </table>
-        <div class="pagination" style="display:flex; justify-content: center">
-          <%== render partial: 'shared/pagination', locals: {pagy: @pagy} %>
-        </div>
-      <% end %>
     </div>
   </div>
 </body>
