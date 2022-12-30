@@ -1,6 +1,6 @@
 <body>
   <div style="display:flex; width:100%">
-    <div style="flex-basis:250px; bckground-color:red; color: white">
+    <div style="flex-basis:250px; bckground-color:red; color: white; border-right: 1px solid #ced4da; margin-right:1px">
       <%= render "site/sidebarMenu"%>
     </div>
     <div style="flex-grow: 1">
@@ -22,6 +22,7 @@
                 <th scope="col">Company</th>
                 <th scope="col">Quantity Sold</th>
                 <th scope="col">Pic</th>
+                <th></th>
               </tr>
             </thead>
             <tbody id="products" data-controller="products" data-action="">

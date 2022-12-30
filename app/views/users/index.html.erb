@@ -1,6 +1,6 @@
 <body>
   <div style="display:flex; width:100%">
-    <div style="flex-basis:250px; bckground-color:red; color: white">
+    <div style="flex-basis:250px; bckground-color:red; color: white; border-right: 1px solid #ced4da; margin-right:1px">
       <%= render "site/sidebarMenu"%>
     </div>
     <div style="flex-grow: 1">
@@ -19,6 +19,7 @@
                 <th scope="col">#Id</th>
                 <th scope="col">Email</th>
                 <th scope="col">Date Create</th>
+                <th></th>
               </tr>
             </thead>
             <tbody id="users" data-controller="users" data-action="">

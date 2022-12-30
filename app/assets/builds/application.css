@@ -18781,7 +18781,7 @@ textarea.form-control-lg {
 }
 
 .nav-header a.nav-link{
-  font-family: 'Montserrat';
+  font-family: 'Montserrat', sans-serif;
   font-style: normal;
   font-weight: 400;
   font-size: 12px;
@@ -18804,8 +18804,7 @@ ul.nav-center{
   display: flex;
   justify-content:space-evenly;
   align-items: center;
-  margin-top: 20px;
-  font-family: 'Montserrat';
+  font-family: 'Montserrat', sans-serif;
   font-style: normal;
   font-weight: 400;
   font-size: 16px;
@@ -18827,7 +18826,7 @@ ul.nav-center{
 }
 
 footer{
-  font-family: 'Montserrat';
+  font-family: 'Montserrat', sans-serif ;
   font-style: normal;
   font-weight: 400;
   font-size: 18px;
@@ -18865,10 +18864,11 @@ footer{
   align-items: center;
   justify-content: center;
   margin-bottom: 70px;
+  padding-top: 57px;
 }
 
 .body-content{
-  font-family: 'Montserrat';
+  font-family: 'Montserrat',sans-serif;
   font-style: normal;
   font-weight: 250;
   font-size: 24px;
@@ -18896,7 +18896,7 @@ footer{
 }
 
 .header-content{
-  font-family: 'Poppins';
+  font-family: 'Poppins', sans-serif;
   font-style: normal;
   font-weight: 700;
   font-size: 52px;
@@ -18963,20 +18963,22 @@ img.img-carousel{
 
 .carousel-control-prev{
   position: static;
+  opacity: 0.9;
 }
 
 .carousel-control-next{
   position: static;
+  opacity: 0.9;
 }
 
 .carousel-btn-next{
-  box-shadow:20px 0px 16px #00000014;
+  box-shadow:-20px 0px 16px #00000014;
   border-radius: 90px;
   border: 0;
 }
 
 .carousel-btn-prev{
-  box-shadow:-20px 0px 16px #00000014;
+  box-shadow:20px 0px 16px #00000014;
   border-radius: 90px;
   border: 0;
 }

@@ -1,21 +1,21 @@
-<div style="width: 100%; display:flex; justify-content:center">
+<div class="col-md-7 col-lg-5 col-xl-5 offset-xl-1">
   <%= simple_form_for @user, url: add_user_users_path, method: :post do |f| %>
-    <div>
-      <div class="field">
-        <%= f.input :email%>
-      </div>
-      <div class="field">
-        <%= f.input :password %>
-      </div>
-      <div class="field">
-        <%= f.input :password_confirmation %>
-      </div>
-
-      <div id="preview"></div>
-
-      <div class="actions">
-        <%= f.submit %>
-      </div>
+    <!-- Email input -->
+    <div class="form-outline mb-4">
+      <%= f.input :email, label: false, placeholder:"Email Address" %>
     </div>
+
+    <!-- Password input -->
+    <div class="form-outline mb-4">
+      <%= f.input :password, label: false, placeholder:"Password" %>
+    </div>
+
+    <div class="form-outline mb-4">
+      <%= f.input :password_confirmation, label: false, placeholder:"Password" %>
+    </div>
+
+    <!-- Submit button -->
+    <%= f.submit "Create", class: "btn btn-primary btn-lg btn-block w-100"%>
+    
   <% end %>
 </div>

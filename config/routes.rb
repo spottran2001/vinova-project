@@ -12,7 +12,6 @@ Rails.application.routes.draw do
 
   resources :products do
     resources :product_photos
-    
   end
   
   resources :users do
